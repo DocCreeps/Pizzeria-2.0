@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PizzaModelStoreContainer" CdmEntityContainer="PizzaEntities">
+    <EntitySetMapping Name="Adresse">
+      <EntityTypeMapping TypeName="PizzaModel.Adresse">
+        <MappingFragment StoreEntitySet="Adresse">
+          <ScalarProperty Name="N_Adresse" ColumnName="N°Adresse" />
+          <ScalarProperty Name="Adresse1" ColumnName="Adresse" />
+          <ScalarProperty Name="N_Quartier" ColumnName="N°Quartier" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BonLiv">
+      <EntityTypeMapping TypeName="PizzaModel.BonLiv">
+        <MappingFragment StoreEntitySet="BonLiv">
+          <ScalarProperty Name="N_BonLiv" ColumnName="N°BonLiv" />
+          <ScalarProperty Name="N_CdeClient" ColumnName="N°CdeClient" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CataloguePizza">
+      <EntityTypeMapping TypeName="PizzaModel.CataloguePizza">
+        <MappingFragment StoreEntitySet="CataloguePizza">
+          <ScalarProperty Name="N_Pizza" ColumnName="N°Pizza" />
+          <ScalarProperty Name="NomPizza" ColumnName="NomPizza" />
+          <ScalarProperty Name="TaillePizza" ColumnName="TaillePizza" />
+          <ScalarProperty Name="PrixPizza" ColumnName="PrixPizza" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CdeClient">
+      <EntityTypeMapping TypeName="PizzaModel.CdeClient">
+        <MappingFragment StoreEntitySet="CdeClient">
+          <ScalarProperty Name="N_CdeClient" ColumnName="N°CdeClient" />
+          <ScalarProperty Name="N_Client" ColumnName="N°Client" />
+          <ScalarProperty Name="Livre_Emporte" ColumnName="Livre-Emporte" />
+          <ScalarProperty Name="Date_Cde" ColumnName="Date Cde" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CLIENT">
+      <EntityTypeMapping TypeName="PizzaModel.CLIENT">
+        <MappingFragment StoreEntitySet="CLIENT">
+          <ScalarProperty Name="N_Client" ColumnName="N°Client" />
+          <ScalarProperty Name="NomClient" ColumnName="NomClient" />
+          <ScalarProperty Name="Adresse" ColumnName="Adresse" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Fabrication">
+      <EntityTypeMapping TypeName="PizzaModel.Fabrication">
+        <MappingFragment StoreEntitySet="Fabrication">
+          <ScalarProperty Name="N_Fab" ColumnName="N°Fab" />
+          <ScalarProperty Name="N_Pizza" ColumnName="N°Pizza" />
+          <ScalarProperty Name="QuantitéFab" ColumnName="QuantitéFab" />
+          <ScalarProperty Name="Date_Fab" ColumnName="Date Fab" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Facture_Client_BonLiv">
+      <EntityTypeMapping TypeName="PizzaModel.Facture_Client_BonLiv">
+        <MappingFragment StoreEntitySet="Facture Client-BonLiv">
+          <ScalarProperty Name="N_Facture" ColumnName="N°Facture" />
+          <ScalarProperty Name="N_BonLiv" ColumnName="N°BonLiv" />
+          <ScalarProperty Name="Date_Facture" ColumnName="Date Facture" />
+          <ScalarProperty Name="Montant_Total" ColumnName="Montant Total" />
+          <ScalarProperty Name="N_Client" ColumnName="N°Client" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LignesCdeClient">
+      <EntityTypeMapping TypeName="PizzaModel.LignesCdeClient">
+        <MappingFragment StoreEntitySet="LignesCdeClient">
+          <ScalarProperty Name="N_LigneCde" ColumnName="N°LigneCde" />
+          <ScalarProperty Name="N_CdeClient" ColumnName="N°CdeClient" />
+          <ScalarProperty Name="N_Pizza" ColumnName="N°Pizza" />
+          <ScalarProperty Name="Quantité" ColumnName="Quantité" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Livraison">
+      <EntityTypeMapping TypeName="PizzaModel.Livraison">
+        <MappingFragment StoreEntitySet="Livraison">
+          <ScalarProperty Name="N_Livraison" ColumnName="N°Livraison" />
+          <ScalarProperty Name="N_BonLiv" ColumnName="N°BonLiv" />
+          <ScalarProperty Name="Date_Depart" ColumnName="Date Depart" />
+          <ScalarProperty Name="Date_Arrive" ColumnName="Date Arrive" />
+          <ScalarProperty Name="N_Quartier" ColumnName="N°Quartier" />
+          <ScalarProperty Name="AdresseLiv" ColumnName="AdresseLiv" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Livreur">
+      <EntityTypeMapping TypeName="PizzaModel.Livreur">
+        <MappingFragment StoreEntitySet="Livreur">
+          <ScalarProperty Name="N_Livreur" ColumnName="N°Livreur" />
+          <ScalarProperty Name="NomLivreur" ColumnName="NomLivreur" />
+          <ScalarProperty Name="N_Quartier" ColumnName="N°Quartier" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Paiement_Fact_Client">
+      <EntityTypeMapping TypeName="PizzaModel.Paiement_Fact_Client">
+        <MappingFragment StoreEntitySet="Paiement Fact Client">
+          <ScalarProperty Name="N_PieceComptable" ColumnName="N°PieceComptable" />
+          <ScalarProperty Name="N_Facture" ColumnName="N°Facture" />
+          <ScalarProperty Name="Date_Facture" ColumnName="Date Facture" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Quartier">
+      <EntityTypeMapping TypeName="PizzaModel.Quartier">
+        <MappingFragment StoreEntitySet="Quartier">
+          <ScalarProperty Name="N_Quartier" ColumnName="N°Quartier" />
+          <ScalarProperty Name="NomQuartier" ColumnName="NomQuartier" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="PizzaModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

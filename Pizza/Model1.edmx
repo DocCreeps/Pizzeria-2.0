@@ -1,0 +1,803 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="PizzaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Adresse">
+          <Key>
+            <PropertyRef Name="N°Adresse" />
+          </Key>
+          <Property Name="N°Adresse" Type="int" Nullable="false" />
+          <Property Name="Adresse" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="N°Quartier" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BonLiv">
+          <Key>
+            <PropertyRef Name="N°BonLiv" />
+          </Key>
+          <Property Name="N°BonLiv" Type="int" Nullable="false" />
+          <Property Name="N°CdeClient" Type="int" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CataloguePizza">
+          <Key>
+            <PropertyRef Name="N°Pizza" />
+          </Key>
+          <Property Name="N°Pizza" Type="int" Nullable="false" />
+          <Property Name="NomPizza" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="TaillePizza" Type="int" Nullable="false" />
+          <Property Name="PrixPizza" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CdeClient">
+          <Key>
+            <PropertyRef Name="N°CdeClient" />
+          </Key>
+          <Property Name="N°CdeClient" Type="int" Nullable="false" />
+          <Property Name="N°Client" Type="int" Nullable="false" />
+          <Property Name="Livre-Emporte" Type="bit" Nullable="false" />
+          <Property Name="Date Cde" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CLIENT">
+          <Key>
+            <PropertyRef Name="N°Client" />
+          </Key>
+          <Property Name="N°Client" Type="int" Nullable="false" />
+          <Property Name="NomClient" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Adresse" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Fabrication">
+          <Key>
+            <PropertyRef Name="N°Fab" />
+          </Key>
+          <Property Name="N°Fab" Type="int" Nullable="false" />
+          <Property Name="N°Pizza" Type="int" Nullable="false" />
+          <Property Name="QuantitéFab" Type="int" Nullable="false" />
+          <Property Name="Date Fab" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Facture Client-BonLiv">
+          <Key>
+            <PropertyRef Name="N°Facture" />
+          </Key>
+          <Property Name="N°Facture" Type="int" Nullable="false" />
+          <Property Name="N°BonLiv" Type="int" Nullable="false" />
+          <Property Name="Date Facture" Type="date" Nullable="false" />
+          <Property Name="Montant Total" Type="money" Nullable="false" />
+          <Property Name="N°Client" Type="int" />
+        </EntityType>
+        <EntityType Name="LignesCdeClient">
+          <Key>
+            <PropertyRef Name="N°LigneCde" />
+            <PropertyRef Name="N°CdeClient" />
+          </Key>
+          <Property Name="N°LigneCde" Type="int" Nullable="false" />
+          <Property Name="N°CdeClient" Type="int" Nullable="false" />
+          <Property Name="N°Pizza" Type="int" Nullable="false" />
+          <Property Name="Quantité" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Livraison">
+          <Key>
+            <PropertyRef Name="N°Livraison" />
+          </Key>
+          <Property Name="N°Livraison" Type="int" Nullable="false" />
+          <Property Name="N°BonLiv" Type="int" Nullable="false" />
+          <Property Name="Date Depart" Type="datetime" Nullable="false" />
+          <Property Name="Date Arrive" Type="datetime" Nullable="false" />
+          <Property Name="N°Quartier" Type="int" Nullable="false" />
+          <Property Name="AdresseLiv" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Livreur">
+          <Key>
+            <PropertyRef Name="N°Livreur" />
+          </Key>
+          <Property Name="N°Livreur" Type="int" Nullable="false" />
+          <Property Name="NomLivreur" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="N°Quartier" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Paiement Fact Client">
+          <Key>
+            <PropertyRef Name="N°PieceComptable" />
+          </Key>
+          <Property Name="N°PieceComptable" Type="int" Nullable="false" />
+          <Property Name="N°Facture" Type="int" Nullable="false" />
+          <Property Name="Date Facture" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Quartier">
+          <Key>
+            <PropertyRef Name="N°Quartier" />
+          </Key>
+          <Property Name="N°Quartier" Type="int" Nullable="false" />
+          <Property Name="NomQuartier" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK_Adresse_Quartier">
+          <End Role="Quartier" Type="Self.Quartier" Multiplicity="1" />
+          <End Role="Adresse" Type="Self.Adresse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Quartier">
+              <PropertyRef Name="N°Quartier" />
+            </Principal>
+            <Dependent Role="Adresse">
+              <PropertyRef Name="N°Quartier" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BonLiv_CdeClient1">
+          <End Role="CdeClient" Type="Self.CdeClient" Multiplicity="1" />
+          <End Role="BonLiv" Type="Self.BonLiv" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CdeClient">
+              <PropertyRef Name="N°CdeClient" />
+            </Principal>
+            <Dependent Role="BonLiv">
+              <PropertyRef Name="N°CdeClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CdeClient_CLIENT1">
+          <End Role="CLIENT" Type="Self.CLIENT" Multiplicity="1" />
+          <End Role="CdeClient" Type="Self.CdeClient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENT">
+              <PropertyRef Name="N°Client" />
+            </Principal>
+            <Dependent Role="CdeClient">
+              <PropertyRef Name="N°Client" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Fabrication_CataloguePizza">
+          <End Role="CataloguePizza" Type="Self.CataloguePizza" Multiplicity="1" />
+          <End Role="Fabrication" Type="Self.Fabrication" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CataloguePizza">
+              <PropertyRef Name="N°Pizza" />
+            </Principal>
+            <Dependent Role="Fabrication">
+              <PropertyRef Name="N°Pizza" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Facture Client-BonLiv_BonLiv">
+          <End Role="BonLiv" Type="Self.BonLiv" Multiplicity="1" />
+          <End Role="Facture Client-BonLiv" Type="Self.Facture Client-BonLiv" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BonLiv">
+              <PropertyRef Name="N°BonLiv" />
+            </Principal>
+            <Dependent Role="Facture Client-BonLiv">
+              <PropertyRef Name="N°BonLiv" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LignesCdeClient_CataloguePizza">
+          <End Role="CataloguePizza" Type="Self.CataloguePizza" Multiplicity="1" />
+          <End Role="LignesCdeClient" Type="Self.LignesCdeClient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CataloguePizza">
+              <PropertyRef Name="N°Pizza" />
+            </Principal>
+            <Dependent Role="LignesCdeClient">
+              <PropertyRef Name="N°Pizza" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LignesCdeClient_CdeClient">
+          <End Role="CdeClient" Type="Self.CdeClient" Multiplicity="1" />
+          <End Role="LignesCdeClient" Type="Self.LignesCdeClient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CdeClient">
+              <PropertyRef Name="N°CdeClient" />
+            </Principal>
+            <Dependent Role="LignesCdeClient">
+              <PropertyRef Name="N°CdeClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Livraison_BonLiv">
+          <End Role="BonLiv" Type="Self.BonLiv" Multiplicity="1" />
+          <End Role="Livraison" Type="Self.Livraison" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BonLiv">
+              <PropertyRef Name="N°BonLiv" />
+            </Principal>
+            <Dependent Role="Livraison">
+              <PropertyRef Name="N°BonLiv" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Livraison_Quartier">
+          <End Role="Quartier" Type="Self.Quartier" Multiplicity="1" />
+          <End Role="Livraison" Type="Self.Livraison" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Quartier">
+              <PropertyRef Name="N°Quartier" />
+            </Principal>
+            <Dependent Role="Livraison">
+              <PropertyRef Name="N°Quartier" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Livreur_Quartier">
+          <End Role="Quartier" Type="Self.Quartier" Multiplicity="1" />
+          <End Role="Livreur" Type="Self.Livreur" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Quartier">
+              <PropertyRef Name="N°Quartier" />
+            </Principal>
+            <Dependent Role="Livreur">
+              <PropertyRef Name="N°Quartier" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Paiement Fact Client_Facture Client-BonLiv">
+          <End Role="Facture Client-BonLiv" Type="Self.Facture Client-BonLiv" Multiplicity="1" />
+          <End Role="Paiement Fact Client" Type="Self.Paiement Fact Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Facture Client-BonLiv">
+              <PropertyRef Name="N°Facture" />
+            </Principal>
+            <Dependent Role="Paiement Fact Client">
+              <PropertyRef Name="N°Facture" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PizzaModelStoreContainer">
+          <EntitySet Name="Adresse" EntityType="Self.Adresse" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BonLiv" EntityType="Self.BonLiv" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CataloguePizza" EntityType="Self.CataloguePizza" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CdeClient" EntityType="Self.CdeClient" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CLIENT" EntityType="Self.CLIENT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Fabrication" EntityType="Self.Fabrication" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Facture Client-BonLiv" EntityType="Self.Facture Client-BonLiv" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LignesCdeClient" EntityType="Self.LignesCdeClient" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Livraison" EntityType="Self.Livraison" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Livreur" EntityType="Self.Livreur" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Paiement Fact Client" EntityType="Self.Paiement Fact Client" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Quartier" EntityType="Self.Quartier" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Adresse_Quartier" Association="Self.FK_Adresse_Quartier">
+            <End Role="Quartier" EntitySet="Quartier" />
+            <End Role="Adresse" EntitySet="Adresse" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BonLiv_CdeClient1" Association="Self.FK_BonLiv_CdeClient1">
+            <End Role="CdeClient" EntitySet="CdeClient" />
+            <End Role="BonLiv" EntitySet="BonLiv" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CdeClient_CLIENT1" Association="Self.FK_CdeClient_CLIENT1">
+            <End Role="CLIENT" EntitySet="CLIENT" />
+            <End Role="CdeClient" EntitySet="CdeClient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Fabrication_CataloguePizza" Association="Self.FK_Fabrication_CataloguePizza">
+            <End Role="CataloguePizza" EntitySet="CataloguePizza" />
+            <End Role="Fabrication" EntitySet="Fabrication" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Facture Client-BonLiv_BonLiv" Association="Self.FK_Facture Client-BonLiv_BonLiv">
+            <End Role="BonLiv" EntitySet="BonLiv" />
+            <End Role="Facture Client-BonLiv" EntitySet="Facture Client-BonLiv" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LignesCdeClient_CataloguePizza" Association="Self.FK_LignesCdeClient_CataloguePizza">
+            <End Role="CataloguePizza" EntitySet="CataloguePizza" />
+            <End Role="LignesCdeClient" EntitySet="LignesCdeClient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LignesCdeClient_CdeClient" Association="Self.FK_LignesCdeClient_CdeClient">
+            <End Role="CdeClient" EntitySet="CdeClient" />
+            <End Role="LignesCdeClient" EntitySet="LignesCdeClient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Livraison_BonLiv" Association="Self.FK_Livraison_BonLiv">
+            <End Role="BonLiv" EntitySet="BonLiv" />
+            <End Role="Livraison" EntitySet="Livraison" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Livraison_Quartier" Association="Self.FK_Livraison_Quartier">
+            <End Role="Quartier" EntitySet="Quartier" />
+            <End Role="Livraison" EntitySet="Livraison" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Livreur_Quartier" Association="Self.FK_Livreur_Quartier">
+            <End Role="Quartier" EntitySet="Quartier" />
+            <End Role="Livreur" EntitySet="Livreur" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Paiement Fact Client_Facture Client-BonLiv" Association="Self.FK_Paiement Fact Client_Facture Client-BonLiv">
+            <End Role="Facture Client-BonLiv" EntitySet="Facture Client-BonLiv" />
+            <End Role="Paiement Fact Client" EntitySet="Paiement Fact Client" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PizzaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Adresse">
+          <Key>
+            <PropertyRef Name="N_Adresse" />
+          </Key>
+          <Property Name="N_Adresse" Type="Int32" Nullable="false" />
+          <Property Name="Adresse1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="N_Quartier" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Quartier" Relationship="Self.FK_Adresse_Quartier" FromRole="Adresse" ToRole="Quartier" />
+        </EntityType>
+        <EntityType Name="BonLiv">
+          <Key>
+            <PropertyRef Name="N_BonLiv" />
+          </Key>
+          <Property Name="N_BonLiv" Type="Int32" Nullable="false" />
+          <Property Name="N_CdeClient" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="CdeClient" Relationship="Self.FK_BonLiv_CdeClient1" FromRole="BonLiv" ToRole="CdeClient" />
+          <NavigationProperty Name="Facture_Client_BonLiv" Relationship="Self.FK_Facture_Client_BonLiv_BonLiv" FromRole="BonLiv" ToRole="Facture_Client_BonLiv" />
+          <NavigationProperty Name="Livraison" Relationship="Self.FK_Livraison_BonLiv" FromRole="BonLiv" ToRole="Livraison" />
+        </EntityType>
+        <EntityType Name="CataloguePizza">
+          <Key>
+            <PropertyRef Name="N_Pizza" />
+          </Key>
+          <Property Name="N_Pizza" Type="Int32" Nullable="false" />
+          <Property Name="NomPizza" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="TaillePizza" Type="Int32" Nullable="false" />
+          <Property Name="PrixPizza" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="Fabrication" Relationship="Self.FK_Fabrication_CataloguePizza" FromRole="CataloguePizza" ToRole="Fabrication" />
+          <NavigationProperty Name="LignesCdeClient" Relationship="Self.FK_LignesCdeClient_CataloguePizza" FromRole="CataloguePizza" ToRole="LignesCdeClient" />
+        </EntityType>
+        <EntityType Name="CdeClient">
+          <Key>
+            <PropertyRef Name="N_CdeClient" />
+          </Key>
+          <Property Name="N_CdeClient" Type="Int32" Nullable="false" />
+          <Property Name="N_Client" Type="Int32" Nullable="false" />
+          <Property Name="Livre_Emporte" Type="Boolean" Nullable="false" />
+          <Property Name="Date_Cde" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="BonLiv" Relationship="Self.FK_BonLiv_CdeClient1" FromRole="CdeClient" ToRole="BonLiv" />
+          <NavigationProperty Name="CLIENT" Relationship="Self.FK_CdeClient_CLIENT1" FromRole="CdeClient" ToRole="CLIENT" />
+          <NavigationProperty Name="LignesCdeClient" Relationship="Self.FK_LignesCdeClient_CdeClient" FromRole="CdeClient" ToRole="LignesCdeClient" />
+        </EntityType>
+        <EntityType Name="CLIENT">
+          <Key>
+            <PropertyRef Name="N_Client" />
+          </Key>
+          <Property Name="N_Client" Type="Int32" Nullable="false" />
+          <Property Name="NomClient" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Adresse" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="CdeClient" Relationship="Self.FK_CdeClient_CLIENT1" FromRole="CLIENT" ToRole="CdeClient" />
+        </EntityType>
+        <EntityType Name="Fabrication">
+          <Key>
+            <PropertyRef Name="N_Fab" />
+          </Key>
+          <Property Name="N_Fab" Type="Int32" Nullable="false" />
+          <Property Name="N_Pizza" Type="Int32" Nullable="false" />
+          <Property Name="QuantitéFab" Type="Int32" Nullable="false" />
+          <Property Name="Date_Fab" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="CataloguePizza" Relationship="Self.FK_Fabrication_CataloguePizza" FromRole="Fabrication" ToRole="CataloguePizza" />
+        </EntityType>
+        <EntityType Name="Facture_Client_BonLiv">
+          <Key>
+            <PropertyRef Name="N_Facture" />
+          </Key>
+          <Property Name="N_Facture" Type="Int32" Nullable="false" />
+          <Property Name="N_BonLiv" Type="Int32" Nullable="false" />
+          <Property Name="Date_Facture" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Montant_Total" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="N_Client" Type="Int32" />
+          <NavigationProperty Name="BonLiv" Relationship="Self.FK_Facture_Client_BonLiv_BonLiv" FromRole="Facture_Client_BonLiv" ToRole="BonLiv" />
+          <NavigationProperty Name="Paiement_Fact_Client" Relationship="Self.FK_Paiement_Fact_Client_Facture_Client_BonLiv" FromRole="Facture_Client_BonLiv" ToRole="Paiement_Fact_Client" />
+        </EntityType>
+        <EntityType Name="LignesCdeClient">
+          <Key>
+            <PropertyRef Name="N_LigneCde" />
+            <PropertyRef Name="N_CdeClient" />
+          </Key>
+          <Property Name="N_LigneCde" Type="Int32" Nullable="false" />
+          <Property Name="N_CdeClient" Type="Int32" Nullable="false" />
+          <Property Name="N_Pizza" Type="Int32" Nullable="false" />
+          <Property Name="Quantité" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CataloguePizza" Relationship="Self.FK_LignesCdeClient_CataloguePizza" FromRole="LignesCdeClient" ToRole="CataloguePizza" />
+          <NavigationProperty Name="CdeClient" Relationship="Self.FK_LignesCdeClient_CdeClient" FromRole="LignesCdeClient" ToRole="CdeClient" />
+        </EntityType>
+        <EntityType Name="Livraison">
+          <Key>
+            <PropertyRef Name="N_Livraison" />
+          </Key>
+          <Property Name="N_Livraison" Type="Int32" Nullable="false" />
+          <Property Name="N_BonLiv" Type="Int32" Nullable="false" />
+          <Property Name="Date_Depart" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Date_Arrive" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="N_Quartier" Type="Int32" Nullable="false" />
+          <Property Name="AdresseLiv" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="BonLiv" Relationship="Self.FK_Livraison_BonLiv" FromRole="Livraison" ToRole="BonLiv" />
+          <NavigationProperty Name="Quartier" Relationship="Self.FK_Livraison_Quartier" FromRole="Livraison" ToRole="Quartier" />
+        </EntityType>
+        <EntityType Name="Livreur">
+          <Key>
+            <PropertyRef Name="N_Livreur" />
+          </Key>
+          <Property Name="N_Livreur" Type="Int32" Nullable="false" />
+          <Property Name="NomLivreur" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="N_Quartier" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Quartier" Relationship="Self.FK_Livreur_Quartier" FromRole="Livreur" ToRole="Quartier" />
+        </EntityType>
+        <EntityType Name="Paiement_Fact_Client">
+          <Key>
+            <PropertyRef Name="N_PieceComptable" />
+          </Key>
+          <Property Name="N_PieceComptable" Type="Int32" Nullable="false" />
+          <Property Name="N_Facture" Type="Int32" Nullable="false" />
+          <Property Name="Date_Facture" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Facture_Client_BonLiv" Relationship="Self.FK_Paiement_Fact_Client_Facture_Client_BonLiv" FromRole="Paiement_Fact_Client" ToRole="Facture_Client_BonLiv" />
+        </EntityType>
+        <EntityType Name="Quartier">
+          <Key>
+            <PropertyRef Name="N_Quartier" />
+          </Key>
+          <Property Name="N_Quartier" Type="Int32" Nullable="false" />
+          <Property Name="NomQuartier" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Adresse" Relationship="Self.FK_Adresse_Quartier" FromRole="Quartier" ToRole="Adresse" />
+          <NavigationProperty Name="Livraison" Relationship="Self.FK_Livraison_Quartier" FromRole="Quartier" ToRole="Livraison" />
+          <NavigationProperty Name="Livreur" Relationship="Self.FK_Livreur_Quartier" FromRole="Quartier" ToRole="Livreur" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_Adresse_Quartier">
+          <End Role="Quartier" Type="Self.Quartier" Multiplicity="1" />
+          <End Role="Adresse" Type="Self.Adresse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Quartier">
+              <PropertyRef Name="N_Quartier" />
+            </Principal>
+            <Dependent Role="Adresse">
+              <PropertyRef Name="N_Quartier" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BonLiv_CdeClient1">
+          <End Role="CdeClient" Type="Self.CdeClient" Multiplicity="1" />
+          <End Role="BonLiv" Type="Self.BonLiv" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CdeClient">
+              <PropertyRef Name="N_CdeClient" />
+            </Principal>
+            <Dependent Role="BonLiv">
+              <PropertyRef Name="N_CdeClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Facture_Client_BonLiv_BonLiv">
+          <End Role="BonLiv" Type="Self.BonLiv" Multiplicity="1" />
+          <End Role="Facture_Client_BonLiv" Type="Self.Facture_Client_BonLiv" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BonLiv">
+              <PropertyRef Name="N_BonLiv" />
+            </Principal>
+            <Dependent Role="Facture_Client_BonLiv">
+              <PropertyRef Name="N_BonLiv" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Livraison_BonLiv">
+          <End Role="BonLiv" Type="Self.BonLiv" Multiplicity="1" />
+          <End Role="Livraison" Type="Self.Livraison" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BonLiv">
+              <PropertyRef Name="N_BonLiv" />
+            </Principal>
+            <Dependent Role="Livraison">
+              <PropertyRef Name="N_BonLiv" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Fabrication_CataloguePizza">
+          <End Role="CataloguePizza" Type="Self.CataloguePizza" Multiplicity="1" />
+          <End Role="Fabrication" Type="Self.Fabrication" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CataloguePizza">
+              <PropertyRef Name="N_Pizza" />
+            </Principal>
+            <Dependent Role="Fabrication">
+              <PropertyRef Name="N_Pizza" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LignesCdeClient_CataloguePizza">
+          <End Role="CataloguePizza" Type="Self.CataloguePizza" Multiplicity="1" />
+          <End Role="LignesCdeClient" Type="Self.LignesCdeClient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CataloguePizza">
+              <PropertyRef Name="N_Pizza" />
+            </Principal>
+            <Dependent Role="LignesCdeClient">
+              <PropertyRef Name="N_Pizza" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CdeClient_CLIENT1">
+          <End Role="CLIENT" Type="Self.CLIENT" Multiplicity="1" />
+          <End Role="CdeClient" Type="Self.CdeClient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENT">
+              <PropertyRef Name="N_Client" />
+            </Principal>
+            <Dependent Role="CdeClient">
+              <PropertyRef Name="N_Client" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LignesCdeClient_CdeClient">
+          <End Role="CdeClient" Type="Self.CdeClient" Multiplicity="1" />
+          <End Role="LignesCdeClient" Type="Self.LignesCdeClient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CdeClient">
+              <PropertyRef Name="N_CdeClient" />
+            </Principal>
+            <Dependent Role="LignesCdeClient">
+              <PropertyRef Name="N_CdeClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Paiement_Fact_Client_Facture_Client_BonLiv">
+          <End Role="Facture_Client_BonLiv" Type="Self.Facture_Client_BonLiv" Multiplicity="1" />
+          <End Role="Paiement_Fact_Client" Type="Self.Paiement_Fact_Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Facture_Client_BonLiv">
+              <PropertyRef Name="N_Facture" />
+            </Principal>
+            <Dependent Role="Paiement_Fact_Client">
+              <PropertyRef Name="N_Facture" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Livraison_Quartier">
+          <End Role="Quartier" Type="Self.Quartier" Multiplicity="1" />
+          <End Role="Livraison" Type="Self.Livraison" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Quartier">
+              <PropertyRef Name="N_Quartier" />
+            </Principal>
+            <Dependent Role="Livraison">
+              <PropertyRef Name="N_Quartier" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Livreur_Quartier">
+          <End Role="Quartier" Type="Self.Quartier" Multiplicity="1" />
+          <End Role="Livreur" Type="Self.Livreur" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Quartier">
+              <PropertyRef Name="N_Quartier" />
+            </Principal>
+            <Dependent Role="Livreur">
+              <PropertyRef Name="N_Quartier" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PizzaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Adresse" EntityType="Self.Adresse" />
+          <EntitySet Name="BonLiv" EntityType="Self.BonLiv" />
+          <EntitySet Name="CataloguePizza" EntityType="Self.CataloguePizza" />
+          <EntitySet Name="CdeClient" EntityType="Self.CdeClient" />
+          <EntitySet Name="CLIENT" EntityType="Self.CLIENT" />
+          <EntitySet Name="Fabrication" EntityType="Self.Fabrication" />
+          <EntitySet Name="Facture_Client_BonLiv" EntityType="Self.Facture_Client_BonLiv" />
+          <EntitySet Name="LignesCdeClient" EntityType="Self.LignesCdeClient" />
+          <EntitySet Name="Livraison" EntityType="Self.Livraison" />
+          <EntitySet Name="Livreur" EntityType="Self.Livreur" />
+          <EntitySet Name="Paiement_Fact_Client" EntityType="Self.Paiement_Fact_Client" />
+          <EntitySet Name="Quartier" EntityType="Self.Quartier" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <AssociationSet Name="FK_Adresse_Quartier" Association="Self.FK_Adresse_Quartier">
+            <End Role="Quartier" EntitySet="Quartier" />
+            <End Role="Adresse" EntitySet="Adresse" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BonLiv_CdeClient1" Association="Self.FK_BonLiv_CdeClient1">
+            <End Role="CdeClient" EntitySet="CdeClient" />
+            <End Role="BonLiv" EntitySet="BonLiv" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Facture_Client_BonLiv_BonLiv" Association="Self.FK_Facture_Client_BonLiv_BonLiv">
+            <End Role="BonLiv" EntitySet="BonLiv" />
+            <End Role="Facture_Client_BonLiv" EntitySet="Facture_Client_BonLiv" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Livraison_BonLiv" Association="Self.FK_Livraison_BonLiv">
+            <End Role="BonLiv" EntitySet="BonLiv" />
+            <End Role="Livraison" EntitySet="Livraison" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Fabrication_CataloguePizza" Association="Self.FK_Fabrication_CataloguePizza">
+            <End Role="CataloguePizza" EntitySet="CataloguePizza" />
+            <End Role="Fabrication" EntitySet="Fabrication" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LignesCdeClient_CataloguePizza" Association="Self.FK_LignesCdeClient_CataloguePizza">
+            <End Role="CataloguePizza" EntitySet="CataloguePizza" />
+            <End Role="LignesCdeClient" EntitySet="LignesCdeClient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CdeClient_CLIENT1" Association="Self.FK_CdeClient_CLIENT1">
+            <End Role="CLIENT" EntitySet="CLIENT" />
+            <End Role="CdeClient" EntitySet="CdeClient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LignesCdeClient_CdeClient" Association="Self.FK_LignesCdeClient_CdeClient">
+            <End Role="CdeClient" EntitySet="CdeClient" />
+            <End Role="LignesCdeClient" EntitySet="LignesCdeClient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Paiement_Fact_Client_Facture_Client_BonLiv" Association="Self.FK_Paiement_Fact_Client_Facture_Client_BonLiv">
+            <End Role="Facture_Client_BonLiv" EntitySet="Facture_Client_BonLiv" />
+            <End Role="Paiement_Fact_Client" EntitySet="Paiement_Fact_Client" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Livraison_Quartier" Association="Self.FK_Livraison_Quartier">
+            <End Role="Quartier" EntitySet="Quartier" />
+            <End Role="Livraison" EntitySet="Livraison" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Livreur_Quartier" Association="Self.FK_Livreur_Quartier">
+            <End Role="Quartier" EntitySet="Quartier" />
+            <End Role="Livreur" EntitySet="Livreur" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PizzaModelStoreContainer" CdmEntityContainer="PizzaEntities">
+          <EntitySetMapping Name="Adresse">
+            <EntityTypeMapping TypeName="PizzaModel.Adresse">
+              <MappingFragment StoreEntitySet="Adresse">
+                <ScalarProperty Name="N_Adresse" ColumnName="N°Adresse" />
+                <ScalarProperty Name="Adresse1" ColumnName="Adresse" />
+                <ScalarProperty Name="N_Quartier" ColumnName="N°Quartier" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BonLiv">
+            <EntityTypeMapping TypeName="PizzaModel.BonLiv">
+              <MappingFragment StoreEntitySet="BonLiv">
+                <ScalarProperty Name="N_BonLiv" ColumnName="N°BonLiv" />
+                <ScalarProperty Name="N_CdeClient" ColumnName="N°CdeClient" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CataloguePizza">
+            <EntityTypeMapping TypeName="PizzaModel.CataloguePizza">
+              <MappingFragment StoreEntitySet="CataloguePizza">
+                <ScalarProperty Name="N_Pizza" ColumnName="N°Pizza" />
+                <ScalarProperty Name="NomPizza" ColumnName="NomPizza" />
+                <ScalarProperty Name="TaillePizza" ColumnName="TaillePizza" />
+                <ScalarProperty Name="PrixPizza" ColumnName="PrixPizza" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CdeClient">
+            <EntityTypeMapping TypeName="PizzaModel.CdeClient">
+              <MappingFragment StoreEntitySet="CdeClient">
+                <ScalarProperty Name="N_CdeClient" ColumnName="N°CdeClient" />
+                <ScalarProperty Name="N_Client" ColumnName="N°Client" />
+                <ScalarProperty Name="Livre_Emporte" ColumnName="Livre-Emporte" />
+                <ScalarProperty Name="Date_Cde" ColumnName="Date Cde" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CLIENT">
+            <EntityTypeMapping TypeName="PizzaModel.CLIENT">
+              <MappingFragment StoreEntitySet="CLIENT">
+                <ScalarProperty Name="N_Client" ColumnName="N°Client" />
+                <ScalarProperty Name="NomClient" ColumnName="NomClient" />
+                <ScalarProperty Name="Adresse" ColumnName="Adresse" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Fabrication">
+            <EntityTypeMapping TypeName="PizzaModel.Fabrication">
+              <MappingFragment StoreEntitySet="Fabrication">
+                <ScalarProperty Name="N_Fab" ColumnName="N°Fab" />
+                <ScalarProperty Name="N_Pizza" ColumnName="N°Pizza" />
+                <ScalarProperty Name="QuantitéFab" ColumnName="QuantitéFab" />
+                <ScalarProperty Name="Date_Fab" ColumnName="Date Fab" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Facture_Client_BonLiv">
+            <EntityTypeMapping TypeName="PizzaModel.Facture_Client_BonLiv">
+              <MappingFragment StoreEntitySet="Facture Client-BonLiv">
+                <ScalarProperty Name="N_Facture" ColumnName="N°Facture" />
+                <ScalarProperty Name="N_BonLiv" ColumnName="N°BonLiv" />
+                <ScalarProperty Name="Date_Facture" ColumnName="Date Facture" />
+                <ScalarProperty Name="Montant_Total" ColumnName="Montant Total" />
+                <ScalarProperty Name="N_Client" ColumnName="N°Client" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LignesCdeClient">
+            <EntityTypeMapping TypeName="PizzaModel.LignesCdeClient">
+              <MappingFragment StoreEntitySet="LignesCdeClient">
+                <ScalarProperty Name="N_LigneCde" ColumnName="N°LigneCde" />
+                <ScalarProperty Name="N_CdeClient" ColumnName="N°CdeClient" />
+                <ScalarProperty Name="N_Pizza" ColumnName="N°Pizza" />
+                <ScalarProperty Name="Quantité" ColumnName="Quantité" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Livraison">
+            <EntityTypeMapping TypeName="PizzaModel.Livraison">
+              <MappingFragment StoreEntitySet="Livraison">
+                <ScalarProperty Name="N_Livraison" ColumnName="N°Livraison" />
+                <ScalarProperty Name="N_BonLiv" ColumnName="N°BonLiv" />
+                <ScalarProperty Name="Date_Depart" ColumnName="Date Depart" />
+                <ScalarProperty Name="Date_Arrive" ColumnName="Date Arrive" />
+                <ScalarProperty Name="N_Quartier" ColumnName="N°Quartier" />
+                <ScalarProperty Name="AdresseLiv" ColumnName="AdresseLiv" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Livreur">
+            <EntityTypeMapping TypeName="PizzaModel.Livreur">
+              <MappingFragment StoreEntitySet="Livreur">
+                <ScalarProperty Name="N_Livreur" ColumnName="N°Livreur" />
+                <ScalarProperty Name="NomLivreur" ColumnName="NomLivreur" />
+                <ScalarProperty Name="N_Quartier" ColumnName="N°Quartier" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Paiement_Fact_Client">
+            <EntityTypeMapping TypeName="PizzaModel.Paiement_Fact_Client">
+              <MappingFragment StoreEntitySet="Paiement Fact Client">
+                <ScalarProperty Name="N_PieceComptable" ColumnName="N°PieceComptable" />
+                <ScalarProperty Name="N_Facture" ColumnName="N°Facture" />
+                <ScalarProperty Name="Date_Facture" ColumnName="Date Facture" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Quartier">
+            <EntityTypeMapping TypeName="PizzaModel.Quartier">
+              <MappingFragment StoreEntitySet="Quartier">
+                <ScalarProperty Name="N_Quartier" ColumnName="N°Quartier" />
+                <ScalarProperty Name="NomQuartier" ColumnName="NomQuartier" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="PizzaModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
