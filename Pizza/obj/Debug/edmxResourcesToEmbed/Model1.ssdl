@@ -20,7 +20,7 @@
     <Key>
       <PropertyRef Name="N°Pizza" />
     </Key>
-    <Property Name="N°Pizza" Type="int" Nullable="false" />
+    <Property Name="N°Pizza" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="NomPizza" Type="nchar" MaxLength="10" Nullable="false" />
     <Property Name="TaillePizza" Type="int" Nullable="false" />
     <Property Name="PrixPizza" Type="money" Nullable="false" />

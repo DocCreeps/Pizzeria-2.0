@@ -24,7 +24,7 @@
     <Key>
       <PropertyRef Name="N_Pizza" />
     </Key>
-    <Property Name="N_Pizza" Type="Int32" Nullable="false" />
+    <Property Name="N_Pizza" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="NomPizza" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
     <Property Name="TaillePizza" Type="Int32" Nullable="false" />
     <Property Name="PrixPizza" Type="Decimal" Precision="19" Scale="4" Nullable="false" />

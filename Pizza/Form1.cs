@@ -45,7 +45,7 @@ namespace Pizza
             double prix = Convert.ToDouble(PrixPizza.Text);
             NouvPizza.PrixPizza = (decimal)prix;
             int verif = db.CataloguePizza.Where(vPizza => vPizza.NomPizza == NouvPizza.NomPizza).Count();
-            NouvPizza.N_Pizza = 0;
+            
 
             if (verif == 0)
             {
