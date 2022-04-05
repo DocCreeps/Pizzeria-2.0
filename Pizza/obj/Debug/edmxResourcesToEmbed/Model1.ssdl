@@ -38,7 +38,7 @@
     <Key>
       <PropertyRef Name="N°Client" />
     </Key>
-    <Property Name="N°Client" Type="int" Nullable="false" />
+    <Property Name="N°Client" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="NomClient" Type="nchar" MaxLength="10" Nullable="false" />
     <Property Name="Adresse" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>

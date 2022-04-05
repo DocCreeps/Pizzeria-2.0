@@ -20,6 +20,7 @@ namespace Pizza
         
 
         public CataloguePizza NouvPizza = new CataloguePizza();
+        public CLIENT NouvClient = new CLIENT();
         public Form1()
         {
             InitializeComponent();
@@ -27,6 +28,8 @@ namespace Pizza
       
         public void loadDataPizza()
         {
+            DataPizza.DataSource = db.CataloguePizza.ToList(); 
+
             List<CataloguePizza> ListC = new List<CataloguePizza>();
             ListC.AddRange(db.CataloguePizza.ToList());
             ComboPizza.ValueMember = "N_Pizza";
@@ -37,16 +40,25 @@ namespace Pizza
             ComboDeletePizza.DisplayMember = "NomPizza";
             ComboDeletePizza.DataSource = ListC;
         }
+        public void loadDataClient()
+        {
+            DataClient.DataSource = db.CLIENT.ToList();
 
+            List<CLIENT> ListClient = new List<CLIENT>();
+            ListClient.AddRange(db.CLIENT.ToList());
+            ComboDeleteClient.ValueMember = "N_Client";
+            ComboDeleteClient.DisplayMember = "NomClient";
+            ComboDeleteClient.DataSource = ListClient;
+
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
             // TODO: cette ligne de code charge les données dans la table 'pizzaDataSet.CataloguePizza'. Vous pouvez la déplacer ou la supprimer selon les besoins.
             this.cataloguePizzaTableAdapter.Fill(this.pizzaDataSet.CataloguePizza);
 
-            DataPizza.DataSource = db.CataloguePizza.ToList();
-
 
             loadDataPizza();
+            loadDataClient();
 
         }
        
@@ -91,6 +103,48 @@ namespace Pizza
             else
             {
                 MessageBox.Show("Cette pizza n'existe pas ");
+
+            }
+        }
+
+        private void AddClient_Click(object sender, EventArgs e)
+        {
+            NouvClient.NomClient = NameClient.Text;
+            int verif = db.CLIENT.Where(VClient => VClient.NomClient == NouvClient.NomClient).Count();
+
+
+            if (verif == 0)
+            {
+                NouvClient.Adresse = AdresseClient.Text;
+                db.CLIENT.Add(NouvClient);
+                db.SaveChanges();
+                MessageBox.Show("Ajout effectué avec succès");
+                loadDataClient();
+            }
+            else
+            {
+                MessageBox.Show("Ce client existe déjà");
+            }
+        }
+
+        private void DeleteClient_Click(object sender, EventArgs e)
+        {
+            String numClients = ComboDeleteClient.SelectedValue.ToString();
+            int Index = Convert.ToInt32(numClients);
+
+            var result = db.CLIENT.SingleOrDefault(client => client.N_Client == Index);
+
+            if (result != null)
+            {
+
+                db.CLIENT.Remove(result);
+                db.SaveChanges();
+                MessageBox.Show("Ce client a été supprimé ");
+                loadDataClient();
+            }
+            else
+            {
+                MessageBox.Show("Ce client n'existe pas ");
 
             }
         }

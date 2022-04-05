@@ -47,7 +47,7 @@
     <Key>
       <PropertyRef Name="N_Client" />
     </Key>
-    <Property Name="N_Client" Type="Int32" Nullable="false" />
+    <Property Name="N_Client" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="NomClient" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
     <Property Name="Adresse" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="CdeClient" Relationship="Self.FK_CdeClient_CLIENT1" FromRole="CLIENT" ToRole="CdeClient" />
