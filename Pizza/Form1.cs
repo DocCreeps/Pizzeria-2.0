@@ -148,5 +148,15 @@ namespace Pizza
 
             }
         }
+
+        private void EditClient_Click(object sender, EventArgs e)
+        {
+            String numClients = ComboDeleteClient.SelectedValue.ToString();
+            VarGlobal.numEditClient = Convert.ToInt32(numClients);
+
+            Form2 form2 = new Form2();
+            form2.ShowDialog();
+            
+        }
     }
 }

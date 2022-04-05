@@ -15,3 +15,4 @@ C:\Users\doria\Bureau\Pizza\Pizza\obj\Debug\Pizza.csproj.CoreCompileInputs.cache
 C:\Users\doria\Bureau\Pizza\Pizza\obj\Debug\Pizza.csproj.CopyComplete
 C:\Users\doria\Bureau\Pizza\Pizza\obj\Debug\Pizza.exe
 C:\Users\doria\Bureau\Pizza\Pizza\obj\Debug\Pizza.pdb
+C:\Users\doria\Bureau\Pizza\Pizza\obj\Debug\Pizza.Form2.resources

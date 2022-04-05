@@ -370,7 +370,7 @@
             // 
             // AddClient
             // 
-            this.AddClient.Location = new System.Drawing.Point(466, 28);
+            this.AddClient.Location = new System.Drawing.Point(171, 166);
             this.AddClient.Name = "AddClient";
             this.AddClient.Size = new System.Drawing.Size(118, 47);
             this.AddClient.TabIndex = 1;
@@ -404,12 +404,13 @@
             // 
             // EditClient
             // 
-            this.EditClient.Location = new System.Drawing.Point(466, 100);
+            this.EditClient.Location = new System.Drawing.Point(654, 113);
             this.EditClient.Name = "EditClient";
             this.EditClient.Size = new System.Drawing.Size(118, 47);
             this.EditClient.TabIndex = 7;
             this.EditClient.Text = "Modifier";
             this.EditClient.UseVisualStyleBackColor = true;
+            this.EditClient.Click += new System.EventHandler(this.EditClient_Click);
             // 
             // ComboDeleteClient
             // 
@@ -430,7 +431,7 @@
             // 
             // DeleteClient
             // 
-            this.DeleteClient.Location = new System.Drawing.Point(802, 113);
+            this.DeleteClient.Location = new System.Drawing.Point(868, 113);
             this.DeleteClient.Name = "DeleteClient";
             this.DeleteClient.Size = new System.Drawing.Size(118, 47);
             this.DeleteClient.TabIndex = 10;
