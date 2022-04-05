@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "0606523b-66a4-4a65-b40f-8e2a637e4547": {
+      "ProjectGuid": "0606523b-66a4-4a65-b40f-8e2a637e4547",
+      "DisplayName": "Pizza",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}
