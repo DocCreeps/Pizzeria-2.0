@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -16,20 +17,16 @@ namespace Pizza
     {
         PizzaEntities db = new PizzaEntities();
 
+        
+
         public CataloguePizza NouvPizza = new CataloguePizza();
         public Form1()
         {
             InitializeComponent();
         }
-    
-
-        private void Form1_Load(object sender, EventArgs e)
+      
+        public void loadDataPizza()
         {
-            // TODO: cette ligne de code charge les données dans la table 'pizzaDataSet.CataloguePizza'. Vous pouvez la déplacer ou la supprimer selon les besoins.
-            this.cataloguePizzaTableAdapter.Fill(this.pizzaDataSet.CataloguePizza);
-
-            DataPizza.DataSource = db.CataloguePizza.ToList();
-
             List<CataloguePizza> ListC = new List<CataloguePizza>();
             ListC.AddRange(db.CataloguePizza.ToList());
             ComboPizza.ValueMember = "N_Pizza";
@@ -39,9 +36,20 @@ namespace Pizza
             ComboDeletePizza.ValueMember = "N_Pizza";
             ComboDeletePizza.DisplayMember = "NomPizza";
             ComboDeletePizza.DataSource = ListC;
-
         }
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            // TODO: cette ligne de code charge les données dans la table 'pizzaDataSet.CataloguePizza'. Vous pouvez la déplacer ou la supprimer selon les besoins.
+            this.cataloguePizzaTableAdapter.Fill(this.pizzaDataSet.CataloguePizza);
+
+            DataPizza.DataSource = db.CataloguePizza.ToList();
+
+
+            loadDataPizza();
+
+        }
+       
         private void AddPizzaSubmit_Click(object sender, EventArgs e)
         {
             NouvPizza.NomPizza = NamePizza.Text;
@@ -57,6 +65,7 @@ namespace Pizza
                 db.CataloguePizza.Add(NouvPizza);
                 db.SaveChanges();
                 MessageBox.Show("Ajout effectué avec succès");
+                loadDataPizza();
             }
             else
             {
@@ -77,7 +86,7 @@ namespace Pizza
                 db.CataloguePizza.Remove(result);
                 db.SaveChanges();
                 MessageBox.Show("Cette pizza a été supprimé ");
-
+                loadDataPizza();
             }
             else
             {
