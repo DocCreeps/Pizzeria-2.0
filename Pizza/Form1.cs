@@ -36,20 +36,24 @@ namespace Pizza
             ComboPizza.DisplayMember = "NomPizza";
             ComboPizza.DataSource = ListC;
 
+            ComboDeletePizza.ValueMember = "N_Pizza";
+            ComboDeletePizza.DisplayMember = "NomPizza";
+            ComboDeletePizza.DataSource = ListC;
+
         }
 
         private void AddPizzaSubmit_Click(object sender, EventArgs e)
         {
             NouvPizza.NomPizza = NamePizza.Text;
-            NouvPizza.TaillePizza = Int32.Parse(TaillePizza.Text);
-            double prix = Convert.ToDouble(PrixPizza.Text);
-            NouvPizza.PrixPizza = (decimal)prix;
+            
             int verif = db.CataloguePizza.Where(vPizza => vPizza.NomPizza == NouvPizza.NomPizza).Count();
             
 
             if (verif == 0)
             {
-               
+                NouvPizza.TaillePizza = Int32.Parse(TaillePizza.Text);
+                double prix = Convert.ToDouble(PrixPizza.Text);
+                NouvPizza.PrixPizza = (decimal)prix;
                 db.CataloguePizza.Add(NouvPizza);
                 db.SaveChanges();
                 MessageBox.Show("Ajout effectué avec succès");
@@ -60,6 +64,26 @@ namespace Pizza
             }
         }
 
-        
+        private void DeletePizza_Click(object sender, EventArgs e)
+        {
+            String numpizz = ComboDeletePizza.SelectedValue.ToString();
+            int Index = Convert.ToInt32(numpizz);
+
+            var result = db.CataloguePizza.SingleOrDefault(cl => cl.N_Pizza == Index);
+
+            if (result != null)
+            {
+
+                db.CataloguePizza.Remove(result);
+                db.SaveChanges();
+                MessageBox.Show("Cette pizza a été supprimé ");
+
+            }
+            else
+            {
+                MessageBox.Show("Cette pizza n'existe pas ");
+
+            }
+        }
     }
 }

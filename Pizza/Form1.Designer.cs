@@ -34,6 +34,7 @@
             this.cataloguePizzaTableAdapter = new Pizza.PizzaDataSetTableAdapters.CataloguePizzaTableAdapter();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.ListePizza = new System.Windows.Forms.TabPage();
+            this.DataPizza = new System.Windows.Forms.DataGridView();
             this.LabelComboPizza = new System.Windows.Forms.Label();
             this.ComboPizza = new System.Windows.Forms.ComboBox();
             this.AddPizza = new System.Windows.Forms.TabPage();
@@ -44,13 +45,15 @@
             this.labelTaillePizza = new System.Windows.Forms.Label();
             this.LabelNomPizza = new System.Windows.Forms.Label();
             this.AddPizzaSubmit = new System.Windows.Forms.Button();
-            this.DataPizza = new System.Windows.Forms.DataGridView();
+            this.DeletePizza = new System.Windows.Forms.Button();
+            this.ComboDeletePizza = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pizzaDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cataloguePizzaBindingSource)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.ListePizza.SuspendLayout();
-            this.AddPizza.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataPizza)).BeginInit();
+            this.AddPizza.SuspendLayout();
             this.SuspendLayout();
             // 
             // pizzaDataSet
@@ -90,6 +93,16 @@
             this.ListePizza.Text = "Liste Pizza";
             this.ListePizza.UseVisualStyleBackColor = true;
             // 
+            // DataPizza
+            // 
+            this.DataPizza.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DataPizza.Location = new System.Drawing.Point(67, 264);
+            this.DataPizza.Name = "DataPizza";
+            this.DataPizza.RowHeadersWidth = 62;
+            this.DataPizza.RowTemplate.Height = 28;
+            this.DataPizza.Size = new System.Drawing.Size(756, 214);
+            this.DataPizza.TabIndex = 2;
+            // 
             // LabelComboPizza
             // 
             this.LabelComboPizza.AutoSize = true;
@@ -109,6 +122,9 @@
             // 
             // AddPizza
             // 
+            this.AddPizza.Controls.Add(this.label1);
+            this.AddPizza.Controls.Add(this.ComboDeletePizza);
+            this.AddPizza.Controls.Add(this.DeletePizza);
             this.AddPizza.Controls.Add(this.PrixPizza);
             this.AddPizza.Controls.Add(this.TaillePizza);
             this.AddPizza.Controls.Add(this.NamePizza);
@@ -174,7 +190,7 @@
             // 
             // AddPizzaSubmit
             // 
-            this.AddPizzaSubmit.Location = new System.Drawing.Point(429, 498);
+            this.AddPizzaSubmit.Location = new System.Drawing.Point(185, 457);
             this.AddPizzaSubmit.Name = "AddPizzaSubmit";
             this.AddPizzaSubmit.Size = new System.Drawing.Size(224, 56);
             this.AddPizzaSubmit.TabIndex = 0;
@@ -182,15 +198,32 @@
             this.AddPizzaSubmit.UseVisualStyleBackColor = true;
             this.AddPizzaSubmit.Click += new System.EventHandler(this.AddPizzaSubmit_Click);
             // 
-            // DataPizza
+            // DeletePizza
             // 
-            this.DataPizza.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DataPizza.Location = new System.Drawing.Point(67, 264);
-            this.DataPizza.Name = "DataPizza";
-            this.DataPizza.RowHeadersWidth = 62;
-            this.DataPizza.RowTemplate.Height = 28;
-            this.DataPizza.Size = new System.Drawing.Size(756, 214);
-            this.DataPizza.TabIndex = 2;
+            this.DeletePizza.Location = new System.Drawing.Point(640, 457);
+            this.DeletePizza.Name = "DeletePizza";
+            this.DeletePizza.Size = new System.Drawing.Size(224, 56);
+            this.DeletePizza.TabIndex = 7;
+            this.DeletePizza.Text = "Supprimer";
+            this.DeletePizza.UseVisualStyleBackColor = true;
+            this.DeletePizza.Click += new System.EventHandler(this.DeletePizza_Click);
+            // 
+            // ComboDeletePizza
+            // 
+            this.ComboDeletePizza.FormattingEnabled = true;
+            this.ComboDeletePizza.Location = new System.Drawing.Point(640, 375);
+            this.ComboDeletePizza.Name = "ComboDeletePizza";
+            this.ComboDeletePizza.Size = new System.Drawing.Size(279, 28);
+            this.ComboDeletePizza.TabIndex = 8;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(651, 331);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(245, 20);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "Selectionnez la pizza a supprimer";
             // 
             // Form1
             // 
@@ -206,9 +239,9 @@
             this.tabControl1.ResumeLayout(false);
             this.ListePizza.ResumeLayout(false);
             this.ListePizza.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DataPizza)).EndInit();
             this.AddPizza.ResumeLayout(false);
             this.AddPizza.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DataPizza)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -230,6 +263,9 @@
         private System.Windows.Forms.ComboBox ComboPizza;
         private System.Windows.Forms.Label LabelComboPizza;
         private System.Windows.Forms.DataGridView DataPizza;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox ComboDeletePizza;
+        private System.Windows.Forms.Button DeletePizza;
     }
 }
 
