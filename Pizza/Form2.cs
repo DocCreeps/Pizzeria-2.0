@@ -18,26 +18,35 @@ namespace Pizza
         {
             InitializeComponent();
         }
-        
-        private void EditClient_Click(object sender, EventArgs e)
-        {
 
-        }
-
+        int numClient = VarGlobal.numEditClient;
         private void Form2_Load(object sender, EventArgs e)
         {
-            int numClient = VarGlobal.numEditClient;
+            
             int verif = db.CLIENT.Where(VClient => VClient.N_Client == numClient).Select(VClient=>VClient.N_Client).FirstOrDefault();
 
             CLIENT Edit =  db.CLIENT.Find(verif);
 
             ClientName.Text = Edit.NomClient;
             ClientAdresse.Text = Edit.Adresse;
-
-
-
-           
-            
         }
+        private void EditClient_Click(object sender, EventArgs e)
+        {
+
+            CLIENT Edit = db.CLIENT.SingleOrDefault(VEdit=>VEdit.N_Client==numClient);
+                
+            if (Edit != null)
+            {
+                Edit.NomClient = ClientName.Text;
+                Edit.Adresse = ClientAdresse.Text;
+                db.SaveChanges();
+                MessageBox.Show("Modification effectué avec succès");
+            }
+            else
+            {
+                MessageBox.Show("Ce client existe déjà");
+            }
+        }
+
     }
 }
