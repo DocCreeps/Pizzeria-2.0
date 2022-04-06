@@ -12,20 +12,22 @@ namespace Pizza
 {
     public partial class Form2 : Form
     {
-        PizzaEntities db = new PizzaEntities();
+        private Form1 _form1;
         public CLIENT ClientEdit = new CLIENT();
-        public Form2()
+        public Form2(Form1 form1)
         {
             InitializeComponent();
+            
+            _form1 = form1;
         }
 
         int numClient = VarGlobal.numEditClient;
         private void Form2_Load(object sender, EventArgs e)
         {
             
-            int verif = db.CLIENT.Where(VClient => VClient.N_Client == numClient).Select(VClient=>VClient.N_Client).FirstOrDefault();
+            int verif = VarGlobal.db.CLIENT.Where(VClient => VClient.N_Client == numClient).Select(VClient=>VClient.N_Client).FirstOrDefault();
 
-            CLIENT Edit =  db.CLIENT.Find(verif);
+            CLIENT Edit = VarGlobal.db.CLIENT.Find(verif);
 
             ClientName.Text = Edit.NomClient;
             ClientAdresse.Text = Edit.Adresse;
@@ -33,19 +35,22 @@ namespace Pizza
         private void EditClient_Click(object sender, EventArgs e)
         {
 
-            CLIENT Edit = db.CLIENT.SingleOrDefault(VEdit=>VEdit.N_Client==numClient);
+            CLIENT Edit = VarGlobal.db.CLIENT.SingleOrDefault(VEdit=>VEdit.N_Client==numClient);
                 
             if (Edit != null)
             {
                 Edit.NomClient = ClientName.Text;
                 Edit.Adresse = ClientAdresse.Text;
-                db.SaveChanges();
+                VarGlobal.db.SaveChanges();
+                _form1.loadDataClient();
                 MessageBox.Show("Modification effectué avec succès");
+
+                
+                this.Close();
+
+                
             }
-            else
-            {
-                MessageBox.Show("Ce client existe déjà");
-            }
+            
         }
 
     }

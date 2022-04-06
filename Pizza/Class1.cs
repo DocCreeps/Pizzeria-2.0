@@ -9,5 +9,6 @@ namespace Pizza
     class VarGlobal
     {
         public static int numEditClient;
+        public static PizzaEntities db;
     }
 }

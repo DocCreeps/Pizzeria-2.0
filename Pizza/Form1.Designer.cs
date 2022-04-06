@@ -56,17 +56,17 @@
             this.DataCommande = new System.Windows.Forms.DataGridView();
             this.AddCommande = new System.Windows.Forms.TabPage();
             this.ListeClients = new System.Windows.Forms.TabPage();
+            this.DeleteClient = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.ComboDeleteClient = new System.Windows.Forms.ComboBox();
+            this.EditClient = new System.Windows.Forms.Button();
+            this.AdresseClient = new System.Windows.Forms.TextBox();
+            this.NameClient = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.AddClient = new System.Windows.Forms.Button();
             this.DataClient = new System.Windows.Forms.DataGridView();
-            this.NameClient = new System.Windows.Forms.TextBox();
-            this.AdresseClient = new System.Windows.Forms.TextBox();
-            this.EditClient = new System.Windows.Forms.Button();
-            this.ComboDeleteClient = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.DeleteClient = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pizzaDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cataloguePizzaBindingSource)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -341,6 +341,57 @@
             this.ListeClients.Text = "Liste Clients";
             this.ListeClients.UseVisualStyleBackColor = true;
             // 
+            // DeleteClient
+            // 
+            this.DeleteClient.Location = new System.Drawing.Point(868, 113);
+            this.DeleteClient.Name = "DeleteClient";
+            this.DeleteClient.Size = new System.Drawing.Size(118, 47);
+            this.DeleteClient.TabIndex = 10;
+            this.DeleteClient.Text = "Supprimer";
+            this.DeleteClient.UseVisualStyleBackColor = true;
+            this.DeleteClient.Click += new System.EventHandler(this.DeleteClient_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(808, 44);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(134, 20);
+            this.label6.TabIndex = 9;
+            this.label6.Text = "Liste des clients : ";
+            // 
+            // ComboDeleteClient
+            // 
+            this.ComboDeleteClient.FormattingEnabled = true;
+            this.ComboDeleteClient.Location = new System.Drawing.Point(654, 70);
+            this.ComboDeleteClient.Name = "ComboDeleteClient";
+            this.ComboDeleteClient.Size = new System.Drawing.Size(390, 28);
+            this.ComboDeleteClient.TabIndex = 8;
+            // 
+            // EditClient
+            // 
+            this.EditClient.Location = new System.Drawing.Point(654, 113);
+            this.EditClient.Name = "EditClient";
+            this.EditClient.Size = new System.Drawing.Size(118, 47);
+            this.EditClient.TabIndex = 7;
+            this.EditClient.Text = "Modifier";
+            this.EditClient.UseVisualStyleBackColor = true;
+            this.EditClient.Click += new System.EventHandler(this.EditClient_Click);
+            // 
+            // AdresseClient
+            // 
+            this.AdresseClient.Location = new System.Drawing.Point(171, 113);
+            this.AdresseClient.Name = "AdresseClient";
+            this.AdresseClient.Size = new System.Drawing.Size(163, 26);
+            this.AdresseClient.TabIndex = 6;
+            // 
+            // NameClient
+            // 
+            this.NameClient.Location = new System.Drawing.Point(171, 38);
+            this.NameClient.Name = "NameClient";
+            this.NameClient.Size = new System.Drawing.Size(163, 26);
+            this.NameClient.TabIndex = 5;
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -387,57 +438,6 @@
             this.DataClient.RowTemplate.Height = 28;
             this.DataClient.Size = new System.Drawing.Size(705, 217);
             this.DataClient.TabIndex = 0;
-            // 
-            // NameClient
-            // 
-            this.NameClient.Location = new System.Drawing.Point(171, 38);
-            this.NameClient.Name = "NameClient";
-            this.NameClient.Size = new System.Drawing.Size(163, 26);
-            this.NameClient.TabIndex = 5;
-            // 
-            // AdresseClient
-            // 
-            this.AdresseClient.Location = new System.Drawing.Point(171, 113);
-            this.AdresseClient.Name = "AdresseClient";
-            this.AdresseClient.Size = new System.Drawing.Size(163, 26);
-            this.AdresseClient.TabIndex = 6;
-            // 
-            // EditClient
-            // 
-            this.EditClient.Location = new System.Drawing.Point(654, 113);
-            this.EditClient.Name = "EditClient";
-            this.EditClient.Size = new System.Drawing.Size(118, 47);
-            this.EditClient.TabIndex = 7;
-            this.EditClient.Text = "Modifier";
-            this.EditClient.UseVisualStyleBackColor = true;
-            this.EditClient.Click += new System.EventHandler(this.EditClient_Click);
-            // 
-            // ComboDeleteClient
-            // 
-            this.ComboDeleteClient.FormattingEnabled = true;
-            this.ComboDeleteClient.Location = new System.Drawing.Point(654, 70);
-            this.ComboDeleteClient.Name = "ComboDeleteClient";
-            this.ComboDeleteClient.Size = new System.Drawing.Size(390, 28);
-            this.ComboDeleteClient.TabIndex = 8;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(808, 44);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(134, 20);
-            this.label6.TabIndex = 9;
-            this.label6.Text = "Liste des clients : ";
-            // 
-            // DeleteClient
-            // 
-            this.DeleteClient.Location = new System.Drawing.Point(868, 113);
-            this.DeleteClient.Name = "DeleteClient";
-            this.DeleteClient.Size = new System.Drawing.Size(118, 47);
-            this.DeleteClient.TabIndex = 10;
-            this.DeleteClient.Text = "Supprimer";
-            this.DeleteClient.UseVisualStyleBackColor = true;
-            this.DeleteClient.Click += new System.EventHandler(this.DeleteClient_Click);
             // 
             // Form1
             // 
@@ -498,13 +498,13 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button AddClient;
-        private System.Windows.Forms.DataGridView DataClient;
         private System.Windows.Forms.Button EditClient;
         private System.Windows.Forms.TextBox AdresseClient;
         private System.Windows.Forms.TextBox NameClient;
         private System.Windows.Forms.Button DeleteClient;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox ComboDeleteClient;
+        internal System.Windows.Forms.ComboBox ComboDeleteClient;
+        internal System.Windows.Forms.DataGridView DataClient;
     }
 }
 
