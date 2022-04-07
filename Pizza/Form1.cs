@@ -18,6 +18,9 @@ namespace Pizza
        
         public CataloguePizza NouvPizza = new CataloguePizza();
         public CLIENT NouvClient = new CLIENT();
+        public CdeClient NewCdeClient = new CdeClient();
+        public LignesCdeClient NewLignecde = new LignesCdeClient();
+        public BonLiv NewbonLiv = new BonLiv();
         public Form1()
         {
             VarGlobal.db = new PizzaEntities();
@@ -170,26 +173,52 @@ namespace Pizza
 
         private void AddPizCommande_Click(object sender, EventArgs e)
         {
+            DataCdeCommande.Rows.Add(ListePizzaCommande.SelectedValue, ListePizzaCommande.Text, Taillepiz.Text, prixpiz.Text);
+
+        }
+
+        private void ConfimeCde_Click(object sender, EventArgs e)
+        {
+
             String NumPizzaCde = ListePizzaCommande.SelectedValue.ToString();
             int PizzaCde = Convert.ToInt32(NumPizzaCde);
 
             String NameClient = NameClientCde.Text;
-            
 
-            var ClientExist = VarGlobal.db.CLIENT.SingleOrDefault(VcClient=>VcClient.NomClient == NameClient);
+
+            var ClientExist = VarGlobal.db.CLIENT.SingleOrDefault(VcClient => VcClient.NomClient == NameClient);
             if (ClientExist != null)
             {
+                int numClient = VarGlobal.db.CLIENT.Where(VcClient => VcClient.NomClient == NameClient).Select(VClient => VClient.N_Client).FirstOrDefault();
 
-                MessageBox.Show("Ce client existe ");
+                //creation d'un num commande
+                NewCdeClient.N_Client = numClient;
+                NewCdeClient.Date_Cde = DateTime.Now;
+                NewCdeClient.Livre_Emporte = Emporte.Checked;
+                VarGlobal.db.CdeClient.Add(NewCdeClient);
+                VarGlobal.db.SaveChanges();
+
+                //ajoute des différente pizza dans lignecde
+
+                //recupere le num commande créer
+               
+               // int n = VarGlobal.db.CdeClient.Select(comDe => comDe.N_CdeClient).OrderByDescending(comDe => comDe).First();
+                int NumCde = VarGlobal.db.CdeClient.Select(comDe => comDe.N_CdeClient).ToList().LastOrDefault();
+
+
+
+
+                //crée bon livraison
+
+
             }
             else
             {
-                MessageBox.Show("Ce client n'existe pas ");
+                MessageBox.Show("Veuillez crée un compte pour commander ");
             }
-            
+
 
         }
-
         private void ListePizzaCommande_SelectedIndexChanged(object sender, EventArgs e)
         {
             CataloguePizza numPizza = (CataloguePizza)ListePizzaCommande.SelectedItem;
@@ -199,5 +228,6 @@ namespace Pizza
 
         }
 
+       
     }
 }

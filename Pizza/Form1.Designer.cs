@@ -49,11 +49,25 @@
             this.LabelNomPizza = new System.Windows.Forms.Label();
             this.AddPizzaSubmit = new System.Windows.Forms.Button();
             this.ListeCommandes = new System.Windows.Forms.TabPage();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.Emporter = new System.Windows.Forms.CheckBox();
+            this.Livrer = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
             this.LabelClient = new System.Windows.Forms.Label();
             this.ComboClients = new System.Windows.Forms.ComboBox();
             this.DataCommande = new System.Windows.Forms.DataGridView();
             this.AddCommande = new System.Windows.Forms.TabPage();
+            this.Taille = new System.Windows.Forms.Label();
+            this.Prix = new System.Windows.Forms.Label();
+            this.Taillepiz = new System.Windows.Forms.TextBox();
+            this.prixpiz = new System.Windows.Forms.TextBox();
+            this.ConfimeCde = new System.Windows.Forms.Button();
+            this.AddPizCommande = new System.Windows.Forms.Button();
+            this.DataCdeCommande = new System.Windows.Forms.DataGridView();
+            this.label8 = new System.Windows.Forms.Label();
+            this.ListePizzaCommande = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.NameClientCde = new System.Windows.Forms.TextBox();
             this.ListeClients = new System.Windows.Forms.TabPage();
             this.DeleteClient = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
@@ -66,20 +80,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.AddClient = new System.Windows.Forms.Button();
             this.DataClient = new System.Windows.Forms.DataGridView();
-            this.Livrer = new System.Windows.Forms.CheckBox();
-            this.Emporter = new System.Windows.Forms.CheckBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.NameClientCde = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.ListePizzaCommande = new System.Windows.Forms.ComboBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.DataCdeCommande = new System.Windows.Forms.DataGridView();
-            this.AddPizCommande = new System.Windows.Forms.Button();
-            this.ConfimeCde = new System.Windows.Forms.Button();
-            this.prixpiz = new System.Windows.Forms.TextBox();
-            this.Taillepiz = new System.Windows.Forms.TextBox();
-            this.Prix = new System.Windows.Forms.Label();
-            this.Taille = new System.Windows.Forms.Label();
+            this.Emporte = new System.Windows.Forms.CheckBox();
+            this.PizzaNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PizzaName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PizzaTaille = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PizzaPrix = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.pizzaDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cataloguePizzaBindingSource)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -89,9 +94,9 @@
             this.ListeCommandes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataCommande)).BeginInit();
             this.AddCommande.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DataCdeCommande)).BeginInit();
             this.ListeClients.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataClient)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DataCdeCommande)).BeginInit();
             this.SuspendLayout();
             // 
             // pizzaDataSet
@@ -283,6 +288,33 @@
             this.ListeCommandes.Text = "Liste Commandes";
             this.ListeCommandes.UseVisualStyleBackColor = true;
             // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(813, 91);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(234, 26);
+            this.dateTimePicker1.TabIndex = 7;
+            // 
+            // Emporter
+            // 
+            this.Emporter.AutoSize = true;
+            this.Emporter.Location = new System.Drawing.Point(608, 94);
+            this.Emporter.Name = "Emporter";
+            this.Emporter.Size = new System.Drawing.Size(101, 24);
+            this.Emporter.TabIndex = 6;
+            this.Emporter.Text = "Emporter";
+            this.Emporter.UseVisualStyleBackColor = true;
+            // 
+            // Livrer
+            // 
+            this.Livrer.AutoSize = true;
+            this.Livrer.Location = new System.Drawing.Point(495, 96);
+            this.Livrer.Name = "Livrer";
+            this.Livrer.Size = new System.Drawing.Size(73, 24);
+            this.Livrer.TabIndex = 5;
+            this.Livrer.Text = "Livrer";
+            this.Livrer.UseVisualStyleBackColor = true;
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -321,6 +353,7 @@
             // 
             // AddCommande
             // 
+            this.AddCommande.Controls.Add(this.Emporte);
             this.AddCommande.Controls.Add(this.Taille);
             this.AddCommande.Controls.Add(this.Prix);
             this.AddCommande.Controls.Add(this.Taillepiz);
@@ -339,6 +372,109 @@
             this.AddCommande.TabIndex = 4;
             this.AddCommande.Text = "Ajouter Commande";
             this.AddCommande.UseVisualStyleBackColor = true;
+            // 
+            // Taille
+            // 
+            this.Taille.AutoSize = true;
+            this.Taille.Location = new System.Drawing.Point(819, 193);
+            this.Taille.Name = "Taille";
+            this.Taille.Size = new System.Drawing.Size(45, 20);
+            this.Taille.TabIndex = 10;
+            this.Taille.Text = "Taille";
+            // 
+            // Prix
+            // 
+            this.Prix.AutoSize = true;
+            this.Prix.Location = new System.Drawing.Point(651, 193);
+            this.Prix.Name = "Prix";
+            this.Prix.Size = new System.Drawing.Size(34, 20);
+            this.Prix.TabIndex = 9;
+            this.Prix.Text = "Prix";
+            // 
+            // Taillepiz
+            // 
+            this.Taillepiz.Location = new System.Drawing.Point(884, 190);
+            this.Taillepiz.Name = "Taillepiz";
+            this.Taillepiz.ReadOnly = true;
+            this.Taillepiz.Size = new System.Drawing.Size(94, 26);
+            this.Taillepiz.TabIndex = 8;
+            // 
+            // prixpiz
+            // 
+            this.prixpiz.Location = new System.Drawing.Point(699, 190);
+            this.prixpiz.Name = "prixpiz";
+            this.prixpiz.ReadOnly = true;
+            this.prixpiz.Size = new System.Drawing.Size(94, 26);
+            this.prixpiz.TabIndex = 7;
+            // 
+            // ConfimeCde
+            // 
+            this.ConfimeCde.Location = new System.Drawing.Point(418, 481);
+            this.ConfimeCde.Name = "ConfimeCde";
+            this.ConfimeCde.Size = new System.Drawing.Size(235, 58);
+            this.ConfimeCde.TabIndex = 6;
+            this.ConfimeCde.Text = "Confirmer commande";
+            this.ConfimeCde.UseVisualStyleBackColor = true;
+            this.ConfimeCde.Click += new System.EventHandler(this.ConfimeCde_Click);
+            // 
+            // AddPizCommande
+            // 
+            this.AddPizCommande.Location = new System.Drawing.Point(418, 249);
+            this.AddPizCommande.Name = "AddPizCommande";
+            this.AddPizCommande.Size = new System.Drawing.Size(235, 58);
+            this.AddPizCommande.TabIndex = 5;
+            this.AddPizCommande.Text = "Ajouter a la commande";
+            this.AddPizCommande.UseVisualStyleBackColor = true;
+            this.AddPizCommande.Click += new System.EventHandler(this.AddPizCommande_Click);
+            // 
+            // DataCdeCommande
+            // 
+            this.DataCdeCommande.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DataCdeCommande.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.PizzaNum,
+            this.PizzaName,
+            this.PizzaTaille,
+            this.PizzaPrix});
+            this.DataCdeCommande.Location = new System.Drawing.Point(80, 329);
+            this.DataCdeCommande.Name = "DataCdeCommande";
+            this.DataCdeCommande.RowHeadersWidth = 62;
+            this.DataCdeCommande.RowTemplate.Height = 28;
+            this.DataCdeCommande.Size = new System.Drawing.Size(878, 128);
+            this.DataCdeCommande.TabIndex = 4;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(506, 155);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(47, 20);
+            this.label8.TabIndex = 3;
+            this.label8.Text = "Pizza";
+            // 
+            // ListePizzaCommande
+            // 
+            this.ListePizzaCommande.FormattingEnabled = true;
+            this.ListePizzaCommande.Location = new System.Drawing.Point(418, 194);
+            this.ListePizzaCommande.Name = "ListePizzaCommande";
+            this.ListePizzaCommande.Size = new System.Drawing.Size(213, 28);
+            this.ListePizzaCommande.TabIndex = 2;
+            this.ListePizzaCommande.SelectedIndexChanged += new System.EventHandler(this.ListePizzaCommande_SelectedIndexChanged);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(185, 32);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(42, 20);
+            this.label7.TabIndex = 1;
+            this.label7.Text = "Nom";
+            // 
+            // NameClientCde
+            // 
+            this.NameClientCde.Location = new System.Drawing.Point(91, 55);
+            this.NameClientCde.Name = "NameClientCde";
+            this.NameClientCde.Size = new System.Drawing.Size(251, 26);
+            this.NameClientCde.TabIndex = 0;
             // 
             // ListeClients
             // 
@@ -459,129 +595,44 @@
             this.DataClient.Size = new System.Drawing.Size(705, 217);
             this.DataClient.TabIndex = 0;
             // 
-            // Livrer
+            // Emporte
             // 
-            this.Livrer.AutoSize = true;
-            this.Livrer.Location = new System.Drawing.Point(495, 96);
-            this.Livrer.Name = "Livrer";
-            this.Livrer.Size = new System.Drawing.Size(73, 24);
-            this.Livrer.TabIndex = 5;
-            this.Livrer.Text = "Livrer";
-            this.Livrer.UseVisualStyleBackColor = true;
+            this.Emporte.AutoSize = true;
+            this.Emporte.Location = new System.Drawing.Point(714, 258);
+            this.Emporte.Name = "Emporte";
+            this.Emporte.Size = new System.Drawing.Size(112, 24);
+            this.Emporte.TabIndex = 11;
+            this.Emporte.Text = "a emporter";
+            this.Emporte.UseVisualStyleBackColor = true;
             // 
-            // Emporter
+            // PizzaNum
             // 
-            this.Emporter.AutoSize = true;
-            this.Emporter.Location = new System.Drawing.Point(608, 94);
-            this.Emporter.Name = "Emporter";
-            this.Emporter.Size = new System.Drawing.Size(101, 24);
-            this.Emporter.TabIndex = 6;
-            this.Emporter.Text = "Emporter";
-            this.Emporter.UseVisualStyleBackColor = true;
+            this.PizzaNum.HeaderText = "IdPizza";
+            this.PizzaNum.MinimumWidth = 8;
+            this.PizzaNum.Name = "PizzaNum";
+            this.PizzaNum.Visible = false;
+            this.PizzaNum.Width = 150;
             // 
-            // dateTimePicker1
+            // PizzaName
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(813, 91);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(234, 26);
-            this.dateTimePicker1.TabIndex = 7;
+            this.PizzaName.HeaderText = "Pizza";
+            this.PizzaName.MinimumWidth = 8;
+            this.PizzaName.Name = "PizzaName";
+            this.PizzaName.Width = 150;
             // 
-            // NameClientCde
+            // PizzaTaille
             // 
-            this.NameClientCde.Location = new System.Drawing.Point(91, 55);
-            this.NameClientCde.Name = "NameClientCde";
-            this.NameClientCde.Size = new System.Drawing.Size(251, 26);
-            this.NameClientCde.TabIndex = 0;
+            this.PizzaTaille.HeaderText = "Taille";
+            this.PizzaTaille.MinimumWidth = 8;
+            this.PizzaTaille.Name = "PizzaTaille";
+            this.PizzaTaille.Width = 150;
             // 
-            // label7
+            // PizzaPrix
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(185, 32);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(42, 20);
-            this.label7.TabIndex = 1;
-            this.label7.Text = "Nom";
-            // 
-            // ListePizzaCommande
-            // 
-            this.ListePizzaCommande.FormattingEnabled = true;
-            this.ListePizzaCommande.Location = new System.Drawing.Point(418, 194);
-            this.ListePizzaCommande.Name = "ListePizzaCommande";
-            this.ListePizzaCommande.Size = new System.Drawing.Size(213, 28);
-            this.ListePizzaCommande.TabIndex = 2;
-            this.ListePizzaCommande.SelectedIndexChanged += new System.EventHandler(this.ListePizzaCommande_SelectedIndexChanged);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(506, 155);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(47, 20);
-            this.label8.TabIndex = 3;
-            this.label8.Text = "Pizza";
-            // 
-            // DataCdeCommande
-            // 
-            this.DataCdeCommande.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DataCdeCommande.Location = new System.Drawing.Point(207, 327);
-            this.DataCdeCommande.Name = "DataCdeCommande";
-            this.DataCdeCommande.RowHeadersWidth = 62;
-            this.DataCdeCommande.RowTemplate.Height = 28;
-            this.DataCdeCommande.Size = new System.Drawing.Size(729, 128);
-            this.DataCdeCommande.TabIndex = 4;
-            // 
-            // AddPizCommande
-            // 
-            this.AddPizCommande.Location = new System.Drawing.Point(418, 249);
-            this.AddPizCommande.Name = "AddPizCommande";
-            this.AddPizCommande.Size = new System.Drawing.Size(235, 58);
-            this.AddPizCommande.TabIndex = 5;
-            this.AddPizCommande.Text = "Ajouter a la commande";
-            this.AddPizCommande.UseVisualStyleBackColor = true;
-            this.AddPizCommande.Click += new System.EventHandler(this.AddPizCommande_Click);
-            // 
-            // ConfimeCde
-            // 
-            this.ConfimeCde.Location = new System.Drawing.Point(418, 481);
-            this.ConfimeCde.Name = "ConfimeCde";
-            this.ConfimeCde.Size = new System.Drawing.Size(235, 58);
-            this.ConfimeCde.TabIndex = 6;
-            this.ConfimeCde.Text = "Confirmer commande";
-            this.ConfimeCde.UseVisualStyleBackColor = true;
-            // 
-            // prixpiz
-            // 
-            this.prixpiz.Location = new System.Drawing.Point(699, 190);
-            this.prixpiz.Name = "prixpiz";
-            this.prixpiz.ReadOnly = true;
-            this.prixpiz.Size = new System.Drawing.Size(94, 26);
-            this.prixpiz.TabIndex = 7;
-            // 
-            // Taillepiz
-            // 
-            this.Taillepiz.Location = new System.Drawing.Point(884, 190);
-            this.Taillepiz.Name = "Taillepiz";
-            this.Taillepiz.ReadOnly = true;
-            this.Taillepiz.Size = new System.Drawing.Size(94, 26);
-            this.Taillepiz.TabIndex = 8;
-            // 
-            // Prix
-            // 
-            this.Prix.AutoSize = true;
-            this.Prix.Location = new System.Drawing.Point(651, 193);
-            this.Prix.Name = "Prix";
-            this.Prix.Size = new System.Drawing.Size(34, 20);
-            this.Prix.TabIndex = 9;
-            this.Prix.Text = "Prix";
-            // 
-            // Taille
-            // 
-            this.Taille.AutoSize = true;
-            this.Taille.Location = new System.Drawing.Point(819, 193);
-            this.Taille.Name = "Taille";
-            this.Taille.Size = new System.Drawing.Size(45, 20);
-            this.Taille.TabIndex = 10;
-            this.Taille.Text = "Taille";
+            this.PizzaPrix.HeaderText = "Prix";
+            this.PizzaPrix.MinimumWidth = 8;
+            this.PizzaPrix.Name = "PizzaPrix";
+            this.PizzaPrix.Width = 150;
             // 
             // Form1
             // 
@@ -605,10 +656,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.DataCommande)).EndInit();
             this.AddCommande.ResumeLayout(false);
             this.AddCommande.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DataCdeCommande)).EndInit();
             this.ListeClients.ResumeLayout(false);
             this.ListeClients.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataClient)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DataCdeCommande)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -665,6 +716,11 @@
         private System.Windows.Forms.Label Prix;
         private System.Windows.Forms.TextBox Taillepiz;
         private System.Windows.Forms.TextBox prixpiz;
+        private System.Windows.Forms.CheckBox Emporte;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PizzaNum;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PizzaName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PizzaTaille;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PizzaPrix;
     }
 }
 

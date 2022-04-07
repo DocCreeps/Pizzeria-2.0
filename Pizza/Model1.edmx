@@ -17,7 +17,7 @@
           <Key>
             <PropertyRef Name="N°BonLiv" />
           </Key>
-          <Property Name="N°BonLiv" Type="int" Nullable="false" />
+          <Property Name="N°BonLiv" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="N°CdeClient" Type="int" Nullable="false" />
           <Property Name="Date" Type="datetime" Nullable="false" />
         </EntityType>
@@ -329,7 +329,7 @@
           <Key>
             <PropertyRef Name="N_BonLiv" />
           </Key>
-          <Property Name="N_BonLiv" Type="Int32" Nullable="false" />
+          <Property Name="N_BonLiv" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="N_CdeClient" Type="Int32" Nullable="false" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="CdeClient" Relationship="Self.FK_BonLiv_CdeClient1" FromRole="BonLiv" ToRole="CdeClient" />

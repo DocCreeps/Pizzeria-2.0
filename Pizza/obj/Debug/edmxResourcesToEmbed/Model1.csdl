@@ -13,7 +13,7 @@
     <Key>
       <PropertyRef Name="N_BonLiv" />
     </Key>
-    <Property Name="N_BonLiv" Type="Int32" Nullable="false" />
+    <Property Name="N_BonLiv" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="N_CdeClient" Type="Int32" Nullable="false" />
     <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
     <NavigationProperty Name="CdeClient" Relationship="Self.FK_BonLiv_CdeClient1" FromRole="BonLiv" ToRole="CdeClient" />
@@ -79,7 +79,7 @@
       <PropertyRef Name="N_LigneCde" />
       <PropertyRef Name="N_CdeClient" />
     </Key>
-    <Property Name="N_LigneCde" Type="Int32" Nullable="false" />
+    <Property Name="N_LigneCde" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="N_CdeClient" Type="Int32" Nullable="false" />
     <Property Name="N_Pizza" Type="Int32" Nullable="false" />
     <Property Name="Quantité" Type="Int32" Nullable="false" />

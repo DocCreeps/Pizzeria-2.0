@@ -12,7 +12,7 @@
     <Key>
       <PropertyRef Name="N°BonLiv" />
     </Key>
-    <Property Name="N°BonLiv" Type="int" Nullable="false" />
+    <Property Name="N°BonLiv" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="N°CdeClient" Type="int" Nullable="false" />
     <Property Name="Date" Type="datetime" Nullable="false" />
   </EntityType>
@@ -66,7 +66,7 @@
       <PropertyRef Name="N°LigneCde" />
       <PropertyRef Name="N°CdeClient" />
     </Key>
-    <Property Name="N°LigneCde" Type="int" Nullable="false" />
+    <Property Name="N°LigneCde" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="N°CdeClient" Type="int" Nullable="false" />
     <Property Name="N°Pizza" Type="int" Nullable="false" />
     <Property Name="Quantité" Type="int" Nullable="false" />
