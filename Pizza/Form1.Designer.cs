@@ -51,7 +51,6 @@
             this.ListeCommandes = new System.Windows.Forms.TabPage();
             this.label3 = new System.Windows.Forms.Label();
             this.LabelClient = new System.Windows.Forms.Label();
-            this.DateCommande = new System.Windows.Forms.ComboBox();
             this.ComboClients = new System.Windows.Forms.ComboBox();
             this.DataCommande = new System.Windows.Forms.DataGridView();
             this.AddCommande = new System.Windows.Forms.TabPage();
@@ -67,6 +66,20 @@
             this.label2 = new System.Windows.Forms.Label();
             this.AddClient = new System.Windows.Forms.Button();
             this.DataClient = new System.Windows.Forms.DataGridView();
+            this.Livrer = new System.Windows.Forms.CheckBox();
+            this.Emporter = new System.Windows.Forms.CheckBox();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.NameClientCde = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.ListePizzaCommande = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.DataCdeCommande = new System.Windows.Forms.DataGridView();
+            this.AddPizCommande = new System.Windows.Forms.Button();
+            this.ConfimeCde = new System.Windows.Forms.Button();
+            this.prixpiz = new System.Windows.Forms.TextBox();
+            this.Taillepiz = new System.Windows.Forms.TextBox();
+            this.Prix = new System.Windows.Forms.Label();
+            this.Taille = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pizzaDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cataloguePizzaBindingSource)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -75,8 +88,10 @@
             this.AddPizza.SuspendLayout();
             this.ListeCommandes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataCommande)).BeginInit();
+            this.AddCommande.SuspendLayout();
             this.ListeClients.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataClient)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DataCdeCommande)).BeginInit();
             this.SuspendLayout();
             // 
             // pizzaDataSet
@@ -253,9 +268,11 @@
             // 
             // ListeCommandes
             // 
+            this.ListeCommandes.Controls.Add(this.dateTimePicker1);
+            this.ListeCommandes.Controls.Add(this.Emporter);
+            this.ListeCommandes.Controls.Add(this.Livrer);
             this.ListeCommandes.Controls.Add(this.label3);
             this.ListeCommandes.Controls.Add(this.LabelClient);
-            this.ListeCommandes.Controls.Add(this.DateCommande);
             this.ListeCommandes.Controls.Add(this.ComboClients);
             this.ListeCommandes.Controls.Add(this.DataCommande);
             this.ListeCommandes.Location = new System.Drawing.Point(4, 29);
@@ -284,14 +301,6 @@
             this.LabelClient.TabIndex = 3;
             this.LabelClient.Text = "Client :";
             // 
-            // DateCommande
-            // 
-            this.DateCommande.FormattingEnabled = true;
-            this.DateCommande.Location = new System.Drawing.Point(748, 94);
-            this.DateCommande.Name = "DateCommande";
-            this.DateCommande.Size = new System.Drawing.Size(299, 28);
-            this.DateCommande.TabIndex = 2;
-            // 
             // ComboClients
             // 
             this.ComboClients.FormattingEnabled = true;
@@ -303,7 +312,7 @@
             // DataCommande
             // 
             this.DataCommande.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DataCommande.Location = new System.Drawing.Point(128, 250);
+            this.DataCommande.Location = new System.Drawing.Point(143, 215);
             this.DataCommande.Name = "DataCommande";
             this.DataCommande.RowHeadersWidth = 62;
             this.DataCommande.RowTemplate.Height = 28;
@@ -312,6 +321,17 @@
             // 
             // AddCommande
             // 
+            this.AddCommande.Controls.Add(this.Taille);
+            this.AddCommande.Controls.Add(this.Prix);
+            this.AddCommande.Controls.Add(this.Taillepiz);
+            this.AddCommande.Controls.Add(this.prixpiz);
+            this.AddCommande.Controls.Add(this.ConfimeCde);
+            this.AddCommande.Controls.Add(this.AddPizCommande);
+            this.AddCommande.Controls.Add(this.DataCdeCommande);
+            this.AddCommande.Controls.Add(this.label8);
+            this.AddCommande.Controls.Add(this.ListePizzaCommande);
+            this.AddCommande.Controls.Add(this.label7);
+            this.AddCommande.Controls.Add(this.NameClientCde);
             this.AddCommande.Location = new System.Drawing.Point(4, 29);
             this.AddCommande.Name = "AddCommande";
             this.AddCommande.Padding = new System.Windows.Forms.Padding(3);
@@ -439,6 +459,130 @@
             this.DataClient.Size = new System.Drawing.Size(705, 217);
             this.DataClient.TabIndex = 0;
             // 
+            // Livrer
+            // 
+            this.Livrer.AutoSize = true;
+            this.Livrer.Location = new System.Drawing.Point(495, 96);
+            this.Livrer.Name = "Livrer";
+            this.Livrer.Size = new System.Drawing.Size(73, 24);
+            this.Livrer.TabIndex = 5;
+            this.Livrer.Text = "Livrer";
+            this.Livrer.UseVisualStyleBackColor = true;
+            // 
+            // Emporter
+            // 
+            this.Emporter.AutoSize = true;
+            this.Emporter.Location = new System.Drawing.Point(608, 94);
+            this.Emporter.Name = "Emporter";
+            this.Emporter.Size = new System.Drawing.Size(101, 24);
+            this.Emporter.TabIndex = 6;
+            this.Emporter.Text = "Emporter";
+            this.Emporter.UseVisualStyleBackColor = true;
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(813, 91);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(234, 26);
+            this.dateTimePicker1.TabIndex = 7;
+            // 
+            // NameClientCde
+            // 
+            this.NameClientCde.Location = new System.Drawing.Point(91, 55);
+            this.NameClientCde.Name = "NameClientCde";
+            this.NameClientCde.Size = new System.Drawing.Size(251, 26);
+            this.NameClientCde.TabIndex = 0;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(185, 32);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(42, 20);
+            this.label7.TabIndex = 1;
+            this.label7.Text = "Nom";
+            // 
+            // ListePizzaCommande
+            // 
+            this.ListePizzaCommande.FormattingEnabled = true;
+            this.ListePizzaCommande.Location = new System.Drawing.Point(418, 194);
+            this.ListePizzaCommande.Name = "ListePizzaCommande";
+            this.ListePizzaCommande.Size = new System.Drawing.Size(213, 28);
+            this.ListePizzaCommande.TabIndex = 2;
+            this.ListePizzaCommande.SelectedIndexChanged += new System.EventHandler(this.ListePizzaCommande_SelectedIndexChanged);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(506, 155);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(47, 20);
+            this.label8.TabIndex = 3;
+            this.label8.Text = "Pizza";
+            // 
+            // DataCdeCommande
+            // 
+            this.DataCdeCommande.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DataCdeCommande.Location = new System.Drawing.Point(207, 327);
+            this.DataCdeCommande.Name = "DataCdeCommande";
+            this.DataCdeCommande.RowHeadersWidth = 62;
+            this.DataCdeCommande.RowTemplate.Height = 28;
+            this.DataCdeCommande.Size = new System.Drawing.Size(729, 128);
+            this.DataCdeCommande.TabIndex = 4;
+            // 
+            // AddPizCommande
+            // 
+            this.AddPizCommande.Location = new System.Drawing.Point(418, 249);
+            this.AddPizCommande.Name = "AddPizCommande";
+            this.AddPizCommande.Size = new System.Drawing.Size(235, 58);
+            this.AddPizCommande.TabIndex = 5;
+            this.AddPizCommande.Text = "Ajouter a la commande";
+            this.AddPizCommande.UseVisualStyleBackColor = true;
+            this.AddPizCommande.Click += new System.EventHandler(this.AddPizCommande_Click);
+            // 
+            // ConfimeCde
+            // 
+            this.ConfimeCde.Location = new System.Drawing.Point(418, 481);
+            this.ConfimeCde.Name = "ConfimeCde";
+            this.ConfimeCde.Size = new System.Drawing.Size(235, 58);
+            this.ConfimeCde.TabIndex = 6;
+            this.ConfimeCde.Text = "Confirmer commande";
+            this.ConfimeCde.UseVisualStyleBackColor = true;
+            // 
+            // prixpiz
+            // 
+            this.prixpiz.Location = new System.Drawing.Point(699, 190);
+            this.prixpiz.Name = "prixpiz";
+            this.prixpiz.ReadOnly = true;
+            this.prixpiz.Size = new System.Drawing.Size(94, 26);
+            this.prixpiz.TabIndex = 7;
+            // 
+            // Taillepiz
+            // 
+            this.Taillepiz.Location = new System.Drawing.Point(884, 190);
+            this.Taillepiz.Name = "Taillepiz";
+            this.Taillepiz.ReadOnly = true;
+            this.Taillepiz.Size = new System.Drawing.Size(94, 26);
+            this.Taillepiz.TabIndex = 8;
+            // 
+            // Prix
+            // 
+            this.Prix.AutoSize = true;
+            this.Prix.Location = new System.Drawing.Point(651, 193);
+            this.Prix.Name = "Prix";
+            this.Prix.Size = new System.Drawing.Size(34, 20);
+            this.Prix.TabIndex = 9;
+            this.Prix.Text = "Prix";
+            // 
+            // Taille
+            // 
+            this.Taille.AutoSize = true;
+            this.Taille.Location = new System.Drawing.Point(819, 193);
+            this.Taille.Name = "Taille";
+            this.Taille.Size = new System.Drawing.Size(45, 20);
+            this.Taille.TabIndex = 10;
+            this.Taille.Text = "Taille";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -459,9 +603,12 @@
             this.ListeCommandes.ResumeLayout(false);
             this.ListeCommandes.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataCommande)).EndInit();
+            this.AddCommande.ResumeLayout(false);
+            this.AddCommande.PerformLayout();
             this.ListeClients.ResumeLayout(false);
             this.ListeClients.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataClient)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DataCdeCommande)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -490,7 +637,6 @@
         private System.Windows.Forms.TabPage AddCommande;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label LabelClient;
-        private System.Windows.Forms.ComboBox DateCommande;
         private System.Windows.Forms.ComboBox ComboClients;
         private System.Windows.Forms.DataGridView DataCommande;
         private System.Windows.Forms.TabPage ListeClients;
@@ -505,6 +651,20 @@
         private System.Windows.Forms.Label label6;
         internal System.Windows.Forms.ComboBox ComboDeleteClient;
         internal System.Windows.Forms.DataGridView DataClient;
+        private System.Windows.Forms.CheckBox Emporter;
+        private System.Windows.Forms.CheckBox Livrer;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.Button ConfimeCde;
+        private System.Windows.Forms.Button AddPizCommande;
+        private System.Windows.Forms.DataGridView DataCdeCommande;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ComboBox ListePizzaCommande;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox NameClientCde;
+        private System.Windows.Forms.Label Taille;
+        private System.Windows.Forms.Label Prix;
+        private System.Windows.Forms.TextBox Taillepiz;
+        private System.Windows.Forms.TextBox prixpiz;
     }
 }
 

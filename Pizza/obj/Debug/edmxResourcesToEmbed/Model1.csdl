@@ -35,7 +35,7 @@
     <Key>
       <PropertyRef Name="N_CdeClient" />
     </Key>
-    <Property Name="N_CdeClient" Type="Int32" Nullable="false" />
+    <Property Name="N_CdeClient" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="N_Client" Type="Int32" Nullable="false" />
     <Property Name="Livre_Emporte" Type="Boolean" Nullable="false" />
     <Property Name="Date_Cde" Type="DateTime" Nullable="false" Precision="0" />

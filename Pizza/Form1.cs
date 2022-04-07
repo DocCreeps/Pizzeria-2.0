@@ -15,10 +15,7 @@ namespace Pizza
     
     public partial class Form1 : Form
     {
-        
        
-
-
         public CataloguePizza NouvPizza = new CataloguePizza();
         public CLIENT NouvClient = new CLIENT();
         public Form1()
@@ -40,6 +37,10 @@ namespace Pizza
             ComboDeletePizza.ValueMember = "N_Pizza";
             ComboDeletePizza.DisplayMember = "NomPizza";
             ComboDeletePizza.DataSource = ListC;
+
+            ListePizzaCommande.ValueMember = "N_Pizza";
+            ListePizzaCommande.DisplayMember = "NomPizza";
+            ListePizzaCommande.DataSource = ListC;
         }
         public void loadDataClient()
         {
@@ -52,6 +53,12 @@ namespace Pizza
             ComboDeleteClient.DataSource = ListClient;
 
         }
+        public void loadDataCommande()
+        {
+           
+            DataCommande.DataSource = VarGlobal.db.CdeClient.ToList();
+
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
             // TODO: cette ligne de code charge les données dans la table 'pizzaDataSet.CataloguePizza'. Vous pouvez la déplacer ou la supprimer selon les besoins.
@@ -59,6 +66,7 @@ namespace Pizza
 
             loadDataPizza();
             loadDataClient();
+            loadDataCommande();
 
         }
        
@@ -159,5 +167,37 @@ namespace Pizza
            
             
         }
+
+        private void AddPizCommande_Click(object sender, EventArgs e)
+        {
+            String NumPizzaCde = ListePizzaCommande.SelectedValue.ToString();
+            int PizzaCde = Convert.ToInt32(NumPizzaCde);
+
+            String NameClient = NameClientCde.Text;
+            
+
+            var ClientExist = VarGlobal.db.CLIENT.SingleOrDefault(VcClient=>VcClient.NomClient == NameClient);
+            if (ClientExist != null)
+            {
+
+                MessageBox.Show("Ce client existe ");
+            }
+            else
+            {
+                MessageBox.Show("Ce client n'existe pas ");
+            }
+            
+
+        }
+
+        private void ListePizzaCommande_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CataloguePizza numPizza = (CataloguePizza)ListePizzaCommande.SelectedItem;
+
+            prixpiz.Text= numPizza.PrixPizza.ToString();
+            Taillepiz.Text = numPizza.TaillePizza.ToString();
+
+        }
+
     }
 }

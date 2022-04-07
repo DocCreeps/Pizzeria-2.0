@@ -29,7 +29,7 @@
     <Key>
       <PropertyRef Name="N°CdeClient" />
     </Key>
-    <Property Name="N°CdeClient" Type="int" Nullable="false" />
+    <Property Name="N°CdeClient" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="N°Client" Type="int" Nullable="false" />
     <Property Name="Livre-Emporte" Type="bit" Nullable="false" />
     <Property Name="Date Cde" Type="date" Nullable="false" />
