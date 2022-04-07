@@ -173,7 +173,10 @@ namespace Pizza
 
         private void AddPizCommande_Click(object sender, EventArgs e)
         {
-            DataCdeCommande.Rows.Add(ListePizzaCommande.SelectedValue, ListePizzaCommande.Text, Taillepiz.Text, prixpiz.Text);
+            int quantity = ((int)Quantity.Value);
+            decimal prixt =  decimal.Parse(prixpiz.Text);
+            decimal prixQuantité = quantity * prixt;
+            DataCdeCommande.Rows.Add(ListePizzaCommande.SelectedValue, ListePizzaCommande.Text, Taillepiz.Text, prixQuantité , Quantity.Value);
 
         }
 

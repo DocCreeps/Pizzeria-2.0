@@ -81,10 +81,13 @@
             this.AddClient = new System.Windows.Forms.Button();
             this.DataClient = new System.Windows.Forms.DataGridView();
             this.Emporte = new System.Windows.Forms.CheckBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.PizzaNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PizzaName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PizzaTaille = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PizzaPrix = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PizzaQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Quantity = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.pizzaDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cataloguePizzaBindingSource)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -97,6 +100,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.DataCdeCommande)).BeginInit();
             this.ListeClients.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataClient)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Quantity)).BeginInit();
             this.SuspendLayout();
             // 
             // pizzaDataSet
@@ -353,6 +357,8 @@
             // 
             // AddCommande
             // 
+            this.AddCommande.Controls.Add(this.Quantity);
+            this.AddCommande.Controls.Add(this.label9);
             this.AddCommande.Controls.Add(this.Emporte);
             this.AddCommande.Controls.Add(this.Taille);
             this.AddCommande.Controls.Add(this.Prix);
@@ -434,7 +440,8 @@
             this.PizzaNum,
             this.PizzaName,
             this.PizzaTaille,
-            this.PizzaPrix});
+            this.PizzaPrix,
+            this.PizzaQuantity});
             this.DataCdeCommande.Location = new System.Drawing.Point(80, 329);
             this.DataCdeCommande.Name = "DataCdeCommande";
             this.DataCdeCommande.RowHeadersWidth = 62;
@@ -605,6 +612,15 @@
             this.Emporte.Text = "a emporter";
             this.Emporte.UseVisualStyleBackColor = true;
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(316, 155);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(70, 20);
+            this.label9.TabIndex = 13;
+            this.label9.Text = "Quantité";
+            // 
             // PizzaNum
             // 
             this.PizzaNum.HeaderText = "IdPizza";
@@ -634,6 +650,30 @@
             this.PizzaPrix.Name = "PizzaPrix";
             this.PizzaPrix.Width = 150;
             // 
+            // PizzaQuantity
+            // 
+            this.PizzaQuantity.HeaderText = "Quantité";
+            this.PizzaQuantity.MinimumWidth = 8;
+            this.PizzaQuantity.Name = "PizzaQuantity";
+            this.PizzaQuantity.Width = 150;
+            // 
+            // Quantity
+            // 
+            this.Quantity.Location = new System.Drawing.Point(266, 196);
+            this.Quantity.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.Quantity.Name = "Quantity";
+            this.Quantity.Size = new System.Drawing.Size(120, 26);
+            this.Quantity.TabIndex = 14;
+            this.Quantity.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -660,6 +700,7 @@
             this.ListeClients.ResumeLayout(false);
             this.ListeClients.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataClient)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Quantity)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -717,10 +758,13 @@
         private System.Windows.Forms.TextBox Taillepiz;
         private System.Windows.Forms.TextBox prixpiz;
         private System.Windows.Forms.CheckBox Emporte;
+        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.DataGridViewTextBoxColumn PizzaNum;
         private System.Windows.Forms.DataGridViewTextBoxColumn PizzaName;
         private System.Windows.Forms.DataGridViewTextBoxColumn PizzaTaille;
         private System.Windows.Forms.DataGridViewTextBoxColumn PizzaPrix;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PizzaQuantity;
+        private System.Windows.Forms.NumericUpDown Quantity;
     }
 }
 
