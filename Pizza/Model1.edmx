@@ -60,7 +60,7 @@
           <Key>
             <PropertyRef Name="N°Facture" />
           </Key>
-          <Property Name="N°Facture" Type="int" Nullable="false" />
+          <Property Name="N°Facture" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="N°BonLiv" Type="int" Nullable="false" />
           <Property Name="Date Facture" Type="date" Nullable="false" />
           <Property Name="Montant Total" Type="money" Nullable="false" />
@@ -382,7 +382,7 @@
           <Key>
             <PropertyRef Name="N_Facture" />
           </Key>
-          <Property Name="N_Facture" Type="Int32" Nullable="false" />
+          <Property Name="N_Facture" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="N_BonLiv" Type="Int32" Nullable="false" />
           <Property Name="Date_Facture" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Montant_Total" Type="Decimal" Precision="19" Scale="4" Nullable="false" />

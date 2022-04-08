@@ -15,12 +15,14 @@ namespace Pizza
     
     public partial class Form1 : Form
     {
-       
+       //déclaration de nouveau objets
         public CataloguePizza NouvPizza = new CataloguePizza();
         public CLIENT NouvClient = new CLIENT();
         public CdeClient NewCdeClient = new CdeClient();
         public LignesCdeClient NewLignecde = new LignesCdeClient();
         public BonLiv NewbonLiv = new BonLiv();
+        public Facture_Client_BonLiv NewFacture_Client_BonLiv = new Facture_Client_BonLiv();
+
         public Form1()
         {
             VarGlobal.db = new PizzaEntities();
@@ -201,19 +203,50 @@ namespace Pizza
                 VarGlobal.db.CdeClient.Add(NewCdeClient);
                 VarGlobal.db.SaveChanges();
 
-                //ajoute des différente pizza dans lignecde
+               
 
                 //recupere le num commande créer
                
                // int n = VarGlobal.db.CdeClient.Select(comDe => comDe.N_CdeClient).OrderByDescending(comDe => comDe).First();
                 int NumCde = VarGlobal.db.CdeClient.Select(comDe => comDe.N_CdeClient).ToList().LastOrDefault();
+                
+                //ajoute des différente pizza dans lignecde
+                for (int i = 0; i < DataCdeCommande.RowCount - 1; i++)
+                {
+                    NewLignecde.N_CdeClient = NumCde;
 
-
-
+                    NewLignecde.N_Pizza = Convert.ToInt32(DataCdeCommande.Rows[i].Cells[0].Value);
+                    NewLignecde.Quantité = Convert.ToInt32(DataCdeCommande.Rows[i].Cells[4].Value);
+                    VarGlobal.db.LignesCdeClient.Add(NewLignecde);
+                    VarGlobal.db.SaveChanges();
+                }
 
                 //crée bon livraison
 
+                NewbonLiv.N_CdeClient = NumCde;
+                NewbonLiv.Date = DateTime.Now;
+                VarGlobal.db.BonLiv.Add(NewbonLiv);
+                VarGlobal.db.SaveChanges();
 
+                //Crée la facture 
+
+
+                //Nbonlivre
+                int NumBonLiv = VarGlobal.db.BonLiv.Select(BonLiv => BonLiv.N_BonLiv).ToList().LastOrDefault();
+                NewFacture_Client_BonLiv.N_BonLiv = NumBonLiv;
+                //date
+                NewFacture_Client_BonLiv.Date_Facture = DateTime.Now;
+                //montanttt
+                decimal montant = 0;
+                for (int i = 0; i < DataCdeCommande.RowCount - 1; i++)
+                {
+                    montant = montant + Convert.ToInt32(DataCdeCommande.Rows[i].Cells[3].Value);
+                }
+                NewFacture_Client_BonLiv.Montant_Total = montant;
+                    //NumClient
+                NewFacture_Client_BonLiv.N_Client = numClient;
+                VarGlobal.db.Facture_Client_BonLiv.Add(NewFacture_Client_BonLiv);
+                VarGlobal.db.SaveChanges();
             }
             else
             {
